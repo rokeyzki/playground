@@ -5,10 +5,12 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="foo">hello</div>
+  <div class="foo">hello world</div>
+  <div class="foo">hello world</div>
+  <div class="foo">hello world</div>
   <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
   <script>
-    $('#foo').after('<span> world</span>');
+    $('.foo').wrapInner('<div id="parent" style="color:red"></div>');
   </script>
 </body>
 </html>
