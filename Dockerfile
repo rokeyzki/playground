@@ -45,6 +45,4 @@ RUN chmod 755 ./start.sh
 EXPOSE 80
 CMD ["./start.sh"]
 
-RUN chmod -R 0777 /var/www/html \
-    && chmod -R 0777 /var/www/html/twcms \
-    && chmod -R 0777 /var/www/html/upload
+RUN chmod -R 0777 /var/www/html
