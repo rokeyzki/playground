@@ -30,6 +30,7 @@ RUN apt-get update \
 # Apache 2 配置文件：/etc/apache2/apache2.conf
 # 给 Apache 2 设置一个默认服务名，避免启动时给个提示让人紧张.
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+
     # PHP 配置文件：/etc/php5/apache2/php.ini
     # 调整 PHP 处理 Request 里变量提交值的顺序，解析顺序从左到右，后解析新值覆盖旧值
     # 默认设定为 EGPCS（ENV/GET/POST/COOKIE/SERVER）
@@ -44,5 +45,3 @@ RUN chmod 755 ./start.sh
 
 EXPOSE 80
 CMD ["./start.sh"]
-
-RUN chmod -R 0777 /var/www/html
