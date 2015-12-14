@@ -8,9 +8,11 @@
   <div id="foo">hello world</div>
   <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
   <script>
-    var val = $('#foo').html();
-    console.log(val);
-    $('#foo').html('<p>hello javascript</p>');
+    // 取值
+    var val = $('#foo').text();
+    console.log(val); // hello world
+    // 赋值
+    $('#foo').text('hello javascript');
   </script>
 </body>
 </html>
