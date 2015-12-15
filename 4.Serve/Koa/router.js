@@ -3,7 +3,7 @@
 * @email:  hi@oulve.com
 * @Date:   2015-12-15 09:22:24
 * @Last Modified by:   Charles Lim
-* @Last Modified time: 2015-12-15 14:59:08
+* @Last Modified time: 2015-12-15 16:49:56
 */
 
 var app     = require('koa')(), // 框架内核
@@ -11,10 +11,10 @@ var app     = require('koa')(), // 框架内核
     cors    = require('koa-cors'), // 支持跨域ajax中间件
     koaBody = require('koa-body')(); // 增强body中间件，获取post数据需要使用koa-body中间件，获取get数据则不需要使用koa-body中间件
 
-router.get('/users/:id/:name', // /users/:id/:name
+router.get('/users/:id/:name',
   function *(next) {
   	console.log('g1');
-  	console.log(this); 
+    // console.log(this); 
   	console.log(this.params); // { id: 17, name: "Alex" } 
     this.user = this.params.id;
     yield next;
@@ -27,7 +27,7 @@ router.get('/users/:id/:name', // /users/:id/:name
   },
   function *(next) {
   	console.log('g3');
-    // this.redirect('http://google.com'); // 页面跳转至谷歌
+    // this.redirect('http://google.com'); // 页面跳转至谷歌 PS：不要在ajax处理逻辑中使用
   }
 );
 
