@@ -1,9 +1,9 @@
-/* 
+/*
 * @Author: Charles Lim
 * @email:  hi@oulve.com
 * @Date:   2015-12-15 09:22:24
 * @Last Modified by:   Charles Lim
-* @Last Modified time: 2015-12-15 16:49:56
+* @Last Modified time: 2015-12-15 20:49:29
 */
 
 var app     = require('koa')(), // 框架内核
@@ -14,8 +14,8 @@ var app     = require('koa')(), // 框架内核
 router.get('/users/:id/:name',
   function *(next) {
   	console.log('g1');
-    // console.log(this); 
-  	console.log(this.params); // { id: 17, name: "Alex" } 
+    // console.log(this);
+  	console.log(this.params); // { id: 17, name: "Alex" }
     this.user = this.params.id;
     yield next;
   },
@@ -51,4 +51,4 @@ app.use(cors());
 app.use(router.routes());
 
 app.listen(3000);
-console.log('start');
+console.log('koa ajax start');

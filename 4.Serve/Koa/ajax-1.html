@@ -23,8 +23,8 @@
     $(document).ready(function(){
       $(".ex1 button").click(function(){
         $(".loading").show();
-        
-        $.post("http://127.0.0.1:3000/users",{id:"11111post", name:"haha"},function(data){
+
+        $.post("http://127.0.0.1:3000/users",{id:"s11111pot", name:"haha"},function(data){
           data = eval('(' + data + ')');
           htmlContent = '';
           htmlContent += '<p><b>' + data['title'] + '</b></p>';
@@ -32,7 +32,7 @@
             htmlContent += '<p style="color:red;">' + data['content'][i] + '</p>';
           };
           $(".ex1 p").html(htmlContent);
-          
+
           $(".loading").hide();
         });
       });
