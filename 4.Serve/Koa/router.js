@@ -3,7 +3,7 @@
 * @email:  hi@oulve.com
 * @Date:   2015-12-15 09:22:24
 * @Last Modified by:   Charles Lim
-* @Last Modified time: 2015-12-15 14:04:42
+* @Last Modified time: 2015-12-15 14:59:08
 */
 
 var app     = require('koa')(), // 框架内核
@@ -11,7 +11,7 @@ var app     = require('koa')(), // 框架内核
     cors    = require('koa-cors'), // 支持跨域ajax中间件
     koaBody = require('koa-body')(); // 增强body中间件，获取post数据需要使用koa-body中间件，获取get数据则不需要使用koa-body中间件
 
-router.get('/users/:id/:name',
+router.get('/users/:id/:name', // /users/:id/:name
   function *(next) {
   	console.log('g1');
   	console.log(this); 
@@ -22,12 +22,12 @@ router.get('/users/:id/:name',
   function *(next) {
   	console.log('g2');
     console.log(this.user+', '+this.params.name);
-    this.body = JSON.stringify('some message');
+    this.body = JSON.stringify('some message: '+this.user+', '+this.params.name);
     yield next;
   },
   function *(next) {
   	console.log('g3');
-    this.redirect('http://google.com');
+    // this.redirect('http://google.com'); // 页面跳转至谷歌
   }
 );
 
@@ -42,7 +42,7 @@ router.post('/users', koaBody,
   	console.log('p2');
     console.log(this.user+', '+this.request.body.name);
 
-    var arr = {'title': this.user+' : '+this.request.body.name, 'content': ['内容一', '内容二', '内容三']};
+    var arr = {'title': 'some message: '+this.user+' : '+this.request.body.name, 'content': ['内容一', '内容二', '内容三']};
     this.body = JSON.stringify(arr);
   }
 );
