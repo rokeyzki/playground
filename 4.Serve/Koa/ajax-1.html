@@ -24,7 +24,7 @@
       $(".ex1 button").click(function(){
         $(".loading").show();
 
-        // var url = "https://127.0.0.1:3000/users";
+        // var url = "http://127.0.0.1:3000/users";
         var url = "https://iqkrkr-3000-aqpnoq.box.myide.io/users";
         $.post(url, {id:"s11111pot", name:"haha"}, function(data){
           data = eval('(' + data + ')');
@@ -44,7 +44,7 @@
 
         var id   = "22222get",
             name = "xixi";
-        // var url = "https://127.0.0.1:3000/users";
+        // var url = "http://127.0.0.1:3000/users";
         var url = "https://iqkrkr-3000-aqpnoq.box.myide.io/users";
         $.get(url+"/"+id+"/"+name, {}, function(data){
           $(".ex2 p").html(data);
