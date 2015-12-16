@@ -24,7 +24,9 @@
       $(".ex1 button").click(function(){
         $(".loading").show();
 
-        $.post("http://127.0.0.1:3000/users",{id:"s11111pot", name:"haha"},function(data){
+        // var url = "https://127.0.0.1:3000/users";
+        var url = "https://iqkrkr-3000-aqpnoq.box.myide.io/users";
+        $.post(url, {id:"s11111pot", name:"haha"}, function(data){
           data = eval('(' + data + ')');
           htmlContent = '';
           htmlContent += '<p><b>' + data['title'] + '</b></p>';
@@ -42,7 +44,9 @@
 
         var id   = "22222get",
             name = "xixi";
-        $.get("http://127.0.0.1:3000/users/"+id+"/"+name,'',function(data){
+        // var url = "https://127.0.0.1:3000/users";
+        var url = "https://iqkrkr-3000-aqpnoq.box.myide.io/users";
+        $.get(url+"/"+id+"/"+name, {}, function(data){
           $(".ex2 p").html(data);
 
           $(".loading").hide();
