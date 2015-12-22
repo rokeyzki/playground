@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div class="ex1">
+    <p>show post</p>
+    <button type='button'>click</button>
+  </div>
+
+  <div class="ex2">
+    <p>show get</p>
+    <button type='button'>click</button>
+  </div>
+
+  <div class="loading" style="display:none;position:absolute;top:50%;left:50%;">
+    <p>加载中。。。</p>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".ex1 button").click(function(){
+        $(".loading").show();
+
+        // var url = "http://127.0.0.1:3000/users";
+        var url = "https://hihckh-3000-gaxjbt.box.myide.io/users";
+        $.post(url, {id:"s11111pot", name:"haha"}, function(data){
+          data = eval('(' + data + ')');
+          htmlContent = '';
+          htmlContent += '<p><b>' + data['title'] + '</b></p>';
+          for (var i = 0; i < data['content'].length; i++) {
+            htmlContent += '<p style="color:red;">' + data['content'][i] + '</p>';
+          };
+          $(".ex1 p").html(htmlContent);
+
+          $(".loading").hide();
+        });
+      });
+
+      $(".ex2 button").click(function(){
+        $(".loading").show();
+
+        var id   = "22222get",
+            name = "xixi";
+        // var url = "http://127.0.0.1:3000/users";
+        var url = "https://hihckh-3000-gaxjbt.box.myide.io/users";
+        $.get(url+"/"+id+"/"+name, {}, function(data){
+          $(".ex2 p").html(data);
+
+          $(".loading").hide();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
