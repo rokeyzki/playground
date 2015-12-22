@@ -25,8 +25,8 @@
         $(".loading").show();
 
         // var url = "http://127.0.0.1:3000/users";
-        var url = "https://hihckh-3000-gaxjbt.box.myide.io/users";
-        $.post(url, {id:"s11111pot", name:"haha"}, function(data){
+        var url = "https://hihckh-8080-axalsg.box.myide.io/users";
+        $.post(url, {id:"s11111post", name:"haha"}, function(data){
           data = eval('(' + data + ')');
           htmlContent = '';
           htmlContent += '<p><b>' + data['title'] + '</b></p>';
@@ -45,7 +45,7 @@
         var id   = "22222get",
             name = "xixi";
         // var url = "http://127.0.0.1:3000/users";
-        var url = "https://hihckh-3000-gaxjbt.box.myide.io/users";
+        var url = "https://hihckh-8080-axalsg.box.myide.io/users";
         $.get(url+"/"+id+"/"+name, {}, function(data){
           $(".ex2 p").html(data);
 
