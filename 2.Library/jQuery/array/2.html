@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script>
+    var foo = ['red', 'blue', 'green', 'yellow'];
+    foo = $.grep(foo, function(value, key){ // 注意：这里回调函数中的参数是value在前，key在后
+      return key >= 2;
+    });
+    console.log(foo); // ["green", "yellow"]
+    var foo = ['red', 'blue', 'green', 'yellow'];
+    foo = $.grep(foo, function(value, key){ // 注意：这里回调函数中的参数是value在前，key在后
+      return key >= 2;
+    }, true); // 注意：最后一个参数为是否反向过滤，默认为 false，当设为 true 时，返回的过滤数组为相反的
+    console.log(foo); // ["red", "blue"]
+  </script>
+</body>
+</html>
