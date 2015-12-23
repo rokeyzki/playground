@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="sign1" style="color: red">
+    <div id="foo">hello world</div>
+  </div>
+  <div id="sign2" style="color: blue"></div>
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script>
+    // 绑定点击事件，使用detach方法后，绑定的事件依然有效
+    $('#foo').bind('click', function(){
+      console.log($(this).html());
+    });
+    // 从sign1中移除又恢复元素到sign2
+    var foo = $('#foo').detach();
+    $('#sign2').append(foo);
+  </script>
+</body>
+</html>
