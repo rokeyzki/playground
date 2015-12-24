@@ -7,11 +7,9 @@
 <body>
   <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
   <script>
-    var foo = ['red', 'blue', 'green', 'yellow'];
-    var status = $.inArray('green', foo);
-    console.log(status); // 2
-    var status = $.inArray('black', foo);
-    console.log(status); // -1
+    var foo = ['red', 'blue', 'green', 'yellow', 'red', 'blue', 'green', 'yellow'];
+    foo = $.unique(foo);
+    console.log(foo); // ["red", "blue", "green", "yellow"]
   </script>
 </body>
 </html>
