@@ -4,15 +4,34 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <style type="text/css">
-    p {
+    div {
+      background-color: #FF9B77;
+      width: 100px;
       height: 100px;
-      height: auto;
+      position: relative;
+      animation: foo 2s ease-in infinite alternate;
+    }
 
-
+    @keyframes foo {
+      0% {
+        background-color: #FF984C;
+      }
+      25% {
+        background-color: #FF73A5;
+      }
+      50% {
+        background-color: #9264FF;
+      }
+      75% {
+        background-color: #51A8FF;
+      }
+      100% {
+        background-color: #5BFF91;
+      }
     }
   </style>
 </head>
 <body>
-
+  <div></div>
 </body>
 </html>
