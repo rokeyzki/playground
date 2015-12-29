@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout</title>
+  <!-- css react：css 初始化，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <style type="text/css">
+    #left {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 300px;
+      height: 1000px;
+      z-index: 1000;
+      background-color: #622;
+    }
+
+    #right {
+      font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+      font-size: 0.9em;
+      color: white;
+      text-rendering: auto;
+      text-shadow: 0.1em 0.1em 0.1em #A6AFB6;
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      background-color: #44AEFF;
+
+      display: inline-block;
+      vertical-align: top;
+      margin: 1em;
+
+      padding: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="left"></div>
+  <div id="right">
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+    <div class="box">文字测试文字测试文字测试文字测试文字测试文字测试</div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(e) {
+      window.addEventListener('hashchange', function(e) {
+        if(window.location.hash == '#close'){
+          document.getElementById('left').style.setProperty('display', 'none');
+        }else{
+          document.getElementById('left').style.setProperty('display', 'block');
+        }
+      }, false);
+    }, false);
+  </script>
+</body>
+</html>
