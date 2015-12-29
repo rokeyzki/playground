@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<title>"display"属性</title>
+    <style type="text/css">
+        div {
+            width: 100px; /* 块级元素DIV 如果不设置宽度值的话，默认为100% */
+            height: 50px;
+            background-color: #669;
+
+            border: 1px solid #000;
+        }
+
+        /* 块级元素：换行占位，受宽高限制 */
+        .block {
+            display: block;
+        }
+
+        /* 行内元素：不换行占位，不受宽高限制 */
+        .inline {
+            display: inline;
+        }
+
+        /* 隐藏元素：不占位，隐藏全部 */
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="block"></div>
+    <div class="block">12345</div>
+    <div class="block">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</div>
+
+    <br/><br/>
+
+    <div class="inline"></div>
+    <div class="inline">12345</div>
+    <div class="inline">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</div>
+
+    <br/><br/>
+
+    <div class="none"></div>
+    <div class="none">12345</div>
+    <div class="none">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</div>
+
+    <p>end</p>
+</body>
+</html>

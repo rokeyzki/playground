@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>组合</title>
+    <style type="text/css">
+        /* 组合一：对话气泡 */
+        #pop{
+            width: 200px;
+            height: 100px;
+            background:#669;
+
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+
+            margin-top: 20px;
+            position: relative
+        }
+
+        #pop:after{
+            content: "";
+            width: 50px;
+            height: 50px;
+            
+            border: 0 solid transparent; 
+            border-bottom: 30px solid #669;
+            
+            -webkit-border-radius: 0 0 0 200px;
+            -moz-border-radius: 0 0 0 200px;
+            border-radius: 0 0 0 200px;
+            
+            -webkit-transform: rotate(-90deg); 
+            -moz-transform: rotate(-90deg); 
+            -ms-transform: rotate(-90deg); 
+            -o-transform: rotate(-90deg);
+
+            position: absolute;
+            top: 70px;
+        }
+
+        /* 组合二：椭圆对话气泡 */
+        #pop-oval{
+            width: 200px;
+            height: 100px;
+            background:#669;
+
+            -webkit-border-radius: 100px / 50px;
+            -moz-border-radius: 100px / 50px;
+            border-radius: 100px / 50px;
+
+            margin-top: 20px;
+            position: relative
+        }
+
+        #pop-oval:after{
+            content: "";
+            width: 50px;
+            height: 50px;
+            
+            border: 0 solid transparent; 
+            border-bottom: 30px solid #669;
+            
+            -webkit-border-radius: 0 0 0 200px;
+            -moz-border-radius: 0 0 0 200px;
+            border-radius: 0 0 0 200px;
+            
+            -webkit-transform: rotate(-90deg); 
+            -moz-transform: rotate(-90deg); 
+            -ms-transform: rotate(-90deg); 
+            -o-transform: rotate(-90deg);
+
+            position: absolute;
+            top: 50px;
+            left: 20px
+        }
+
+        /* 组合三：左右倾斜 */
+        #lr45-capsule-up {
+            width: 160px;
+            height: 200px;
+            position: relative
+        }
+
+        #lr45-capsule-up:before {
+            content: "";
+            width: 80px;
+            height: 200px;
+            background-color: #669;
+            
+            border: 0 solid transparent;
+            -webkit-border-radius:100px;
+            -moz-border-radius:100px;
+            border-radius:100px 100px 0 0;
+
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            
+            position:absolute;
+            left:20px;
+        }
+
+        #lr45-capsule-up:after {
+            content: "";
+            width: 80px;
+            height: 200px;
+            background-color: #669;
+            
+            border: 0 solid transparent;
+            -webkit-border-radius:100px;
+            -moz-border-radius:100px;
+            border-radius:100px 100px 0 0;
+
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            
+            position:absolute;
+            left:160px;
+        }
+
+        /* 组合四：心形 */
+        #heart {
+            width: 160px;
+            height: 200px;
+            position:relative
+        }
+
+        #heart:before {
+            content: "";
+            width: 80px;
+            height: 120px;
+            background-color: #669;
+            
+            border: 0 solid transparent;
+            -webkit-border-radius:100px;
+            -moz-border-radius:100px;
+            border-radius:100px 100px 0 0;
+
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            
+            position:absolute;
+            left:20px;
+        }
+
+        #heart:after {
+            content: "";
+            width: 80px;
+            height: 120px;
+            background-color: #669;
+            
+            border: 0 solid transparent;
+            -webkit-border-radius:100px;
+            -moz-border-radius:100px;
+            border-radius:100px 100px 0 0;
+
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            
+            position:absolute;
+            left:48px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pop"></div>
+    <br/><br/>
+    <div id="pop-oval"></div>
+    <br/><br/>
+    <div id="lr45-capsule-up"></div>
+    <br/><br/>
+    <div id="heart"></div>
+</body>
+</html>

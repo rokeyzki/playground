@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>三角</title>
+    <style type="text/css">
+        /* 向上三角 */
+        #triangle-up {
+            width: 0;
+            height: 0;
+
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #669;
+        }
+        
+        /* 向下三角 */
+        #triangle-down {
+            width: 0;
+            height: 0;
+
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 100px solid #669;
+        }
+
+        /* 向左三角 */
+        #triangle-left {
+            width: 0;
+            height: 0;
+
+            border-top: 50px solid transparent;
+            border-right: 100px solid #669;
+            border-bottom: 50px solid transparent;
+        }
+
+        /* 向右三角 */
+        #triangle-right {
+            width: 0;
+            height: 0;
+
+            border-top: 50px solid transparent;
+            border-left: 100px solid #669;
+            border-bottom: 50px solid transparent;
+        }
+
+        /* 左上三角 */
+        #triangle-lefttop {
+            width: 0;
+            height: 0;
+
+            border-top: 100px solid #669;
+            border-right: 100px solid transparent;
+        }
+
+        /* 右上三角 */
+        #triangle-righttop {
+            width: 0;
+            height: 0;
+
+            border-top: 100px solid #669;
+            border-left: 100px solid transparent; 
+        }
+
+        /* 左下三角 */
+        #triangle-leftbottom {
+            width: 0;
+            height: 0;
+
+            border-bottom: 100px solid #669;
+            border-right: 100px solid transparent;
+        }
+
+        /* 右下三角 */
+        #triangle-rightbottom {
+            width: 0;
+            height: 0;
+
+            border-bottom: 100px solid #669;
+            border-left: 100px solid transparent;
+        }
+
+        /* 六芒星：上下三角 */
+        #triangle-updown {
+            width: 0; 
+            height: 0; 
+
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent; 
+            border-bottom: 100px solid #669;
+
+            position:relative;
+            margin-bottom:50px
+        }
+
+        #triangle-updown:after {
+            content:""; 
+            width: 0; 
+            height: 0; 
+
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 100px solid #669;
+
+            position:absolute;
+            top:50px;
+            left:-50px;
+        }
+
+        /* 拼凑：四个三角 */
+        #triangle-square {
+            width: 0px;
+            height: 0px;
+
+            border-left: 50px solid #060;
+            border-right: 50px solid #600;
+            border-bottom: 50px solid #f00;
+            border-top: 50px solid #00f;
+        }
+    </style>
+</head>
+<body>
+    <div id="triangle-up"></div>
+    <br/><br/>
+    <div id="triangle-down"></div>
+    <br/><br/>
+    <div id="triangle-left"></div>
+    <br/><br/>
+    <div id="triangle-right"></div>
+    <br/><br/>
+    <div id="triangle-lefttop"></div>
+    <br/><br/>
+    <div id="triangle-righttop"></div>
+    <br/><br/>
+    <div id="triangle-leftbottom"></div>
+    <br/><br/>
+    <div id="triangle-rightbottom"></div>
+    <br/><br/>
+    <div id="triangle-updown"></div>
+    <br/><br/>
+    <div id="triangle-square"></div>
+</body>
+</html>

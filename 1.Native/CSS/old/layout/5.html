@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>position</title>
+    <style type="text/css">
+        /* 
+            static 是position属性的默认值。任意 position: static; 的元素不会被特殊的定位。
+            一个 static 元素表示它不会被“positioned”，一个 position 属性被设置为其他值的元素表示它会被“positioned”。 
+        */
+        .static {
+            background-color: #669;
+
+            position: static;
+        }
+        
+        /* 
+            relative 表现的和 static 一样，除非你添加了一些额外的属性
+         */
+        .relative1 {
+            background-color: #669;
+
+            position: relative;
+        }
+        
+        /* 
+            在一个相对定位（position属性的值为relative）的元素上设置 top 、 right 、 bottom 和 left 属性会使其偏离其正常位置。其他的元素则不会调整位置来弥补它偏离后剩下的空隙。
+         */
+        .relative2 {
+            width: 500px;
+            background-color: #999;
+
+            position: relative;
+            top: -30px;
+            left: 120px;
+        }
+        
+        /* 
+            一个固定定位（position属性的值为fixed）元素会相对于视窗来定位，这意味着即便页面滚动，它还是会停留在相同的位置。
+            和 relative 一样， top 、 right 、 bottom 和 left 属性都可用。
+            一个固定定位元素不会保留它原本在页面应有的空隙。
+
+            令人惊讶地是移动浏览器对 fixed 的支持很差。
+         */
+        .fixed {
+            width: 200px;
+            height: 200px;
+            background-color: #669;
+            
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+
+        /* 
+            absolute 是最棘手的position值。 absolute 与 fixed 的表现类似，除了它不是相对于视窗而是相对于最近的“positioned”祖先元素。
+            如果绝对定位（position属性的值为absolute）的元素没有“positioned”祖先元素，那么它是相对于文档的 body 元素，并且它会随着页面滚动而移动。
+            记住一个“positioned”元素是指position 值不是 static 的元素。
+         */
+        .relative3 {
+            width: 600px;
+            height: 400px;
+            background-color: #669;
+
+            position: relative;
+        }
+
+        .absolute {
+            width: 300px;
+            height: 200px;
+            background-color: #999;
+
+            position: absolute;
+            top: 120px;
+            right: 0;
+        }
+
+        /* 使用 position 布局 */
+        /* 
+            这个例子在容器比nav元素高的时候可以正常工作。如果容器比nav元素低，那么nav会溢出到容器的外面。之后我们会讨论下其他布局技术，它们都各有优劣
+         */
+        .nav {
+            width: 200px;
+            background-color: #444;
+
+            position: absolute;
+        }
+
+        .column {
+            background-color: #999;
+
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body style="height: 2000px;">
+    <div class="static">static</div>
+
+    <br/><br/>
+
+    <div class="relative1">relative1</div>
+    <div class="relative2">relative2</div>
+
+    <br/><br/>
+
+    <div class="fixed">fixed</div>
+
+    <br/><br/>
+
+    <div class="relative3">relative3
+        <div class="absolute">absolute</div>
+    </div>
+    
+    <br/><br/>
+
+    <hr/>
+
+    <div>
+        <div class="nav">111</div>
+        <div class="column">
+            <section>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</section>
+            <section>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</section>
+            <section>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</section>
+        </div>
+    </div>
+</body>
+</html>

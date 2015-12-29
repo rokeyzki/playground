@@ -1,0 +1,83 @@
+@charset "utf-8";
+body {
+  background-color: aqua;
+}
+p {
+  background-color: #ff0000;
+}
+.test1 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  border: solid 5px pink;
+}
+.border1 {
+  border: solid 5px pink;
+}
+.test2 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  border: solid 30px #ffc0cb;
+}
+.test3 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  border: solid 5px #ffc0cb;
+}
+.sanjiao {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-width: 10px;
+  border-color: transparent transparent red transparent;
+  border-style: dashed dashed solid dashed;
+}
+.triangle {
+  border-width: 100px;
+  border-color: transparent transparent transparent #ff0000;
+  border-style: dashed dashed dashed solid;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.math {
+  width: 50px;
+  height: 100px;
+  background-color: red;
+}
+.list {
+  width: 600px;
+  margin: 30px auto;
+  padding: 0;
+  list-style: none;
+}
+.list li {
+  height: 30px;
+  line-height: 30px;
+  background-color: pink;
+  margin-bottom: 5px;
+}
+.list li a {
+  float: left;
+}
+.list li a:hover {
+  color: red;
+}
+.list li span {
+  float: right;
+}
+.stop {
+  width: calc(300px - 30px);
+  height: 100px;
+  background-color: red;
+}
+.important {
+  border-width: 100px !important;
+  border-color: transparent transparent transparent #ff0000 !important;
+  border-style: dashed dashed dashed solid !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

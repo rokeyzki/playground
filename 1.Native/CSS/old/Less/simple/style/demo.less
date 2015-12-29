@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+body {
+    background-color: aqua;
+}
+
+// 注释
+
+// 变量
+@foo:red;
+
+p {
+    background-color: @foo;
+}
+
+// 混合
+@value: 100px;
+
+.test1 {
+    width: @value;
+    height: @value;
+    background-color: @foo;
+    .border1;
+}
+
+.border1 {
+    border: solid 5px pink;
+}
+
+// 混合-带参数
+.test2 {
+    width: @value;
+    height: @value;
+    background-color: @foo;
+    .border2(30px);
+}
+
+.border2(@width){
+    border: solid @width pink;
+}
+
+// 混合-带参数带默认值
+.test3 {
+    width: @value;
+    height: @value;
+    background-color: @foo;
+    .border3(); // 有参数的需要在后面加(),类似函数调用
+}
+
+.border3(@width:5px){
+    border: solid @width pink;
+}
+
+// 匹配模式
+.sanjiao {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    
+    border-width: 10px;
+    border-color: transparent transparent red transparent;
+    border-style: dashed dashed solid dashed;
+}
+
+.triangle-proto(top, @width:100px, @color:red) {
+    border-width: @width;
+    border-color: transparent transparent @color transparent;
+    border-style: dashed dashed solid dashed;
+}
+
+.triangle-proto(bottom, @width:100px, @color:red) {
+    border-width: @width;
+    border-color: @color transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+}
+
+.triangle-proto(left, @width:100px, @color:red) {
+    border-width: @width;
+    border-color: transparent @color transparent transparent;
+    border-style: dashed solid dashed dashed;
+}
+
+.triangle-proto(right, @width:100px, @color:red) {
+    border-width: @width;
+    border-color: transparent transparent transparent @color;
+    border-style: dashed dashed dashed solid;
+}
+
+.triangle-proto(@_, @width:100px, @color:red) {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.triangle {
+    .triangle-proto(right);
+}
+
+// 运算
+@math_width:30px;
+
+.math {
+    width: (@math_width - 20)*5;
+    height: 100px;
+    background-color: red;
+}
+
+// 嵌套
+.list {
+    width: 600px;
+    margin: 30px auto;
+    padding: 0;
+    list-style: none;
+    
+    li {
+        height: 30px;
+        line-height: 30px;
+        background-color: pink;
+        margin-bottom: 5px;
+        
+        a {
+            float: left;
+            &:hover{
+                color:red;
+            }
+        }
+        span {
+            float: right;
+        }
+    }
+}
+
+// 避免编译
+.stop {
+    width:~'calc(300px - 30px)';
+    height: 100px;
+    background-color: red;
+}
+
+// important
+.important {
+    .triangle() !important;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>网格平铺</title>
+
+    <style type="text/css">
+        /* 方法一，使用浮动的方式来进行网格平铺 */
+        .box-a {
+            width: 200px;
+            height: 100px;
+            background-color: #666;
+
+            float: left;
+            margin: 1em;
+        }
+
+        .after-box-a {
+            clear: left;
+        }
+
+        /* 方法二（推荐方式），使用 display 属性的值 inline-block 来实现相同效果的方式进行网格平铺 */
+        .box-b {
+            width: 200px;
+            height: 100px;
+            background-color: #666;
+
+            display: inline-block;
+            vertical-align: top;
+            margin: 1em;
+        }
+
+        /* 使用 inline-block 布局 */
+        /* 
+            使用 inline-block 来布局。有一些事情需要你牢记：
+            1，vertical-align 属性会影响到 inline-block 元素，你可能会把它的值设置为 top 。
+            2，你需要设置每一列的宽度
+            3，（重点）如果HTML源代码中元素之间有空格，那么列与列之间会产生空隙
+         */
+        .nav {
+            width: 25%;
+            background-color: #444;
+            
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .column {
+            width: 75%;
+            background-color: #999;
+
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+    <div class="box-a"></div>
+
+    <div class="after-box-a"></div>
+
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+    <div class="box-b"></div>
+
+    <hr/>
+    
+    <div>
+        <div class="nav">
+            111
+        </div><div class="column">
+            <section>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</section>
+            <section>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</section>
+            <section>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>圆角</title>
+    <style type="text/css">
+        /* 实心圆角 */
+        #circle {
+            width: 200px; 
+            height: 200px; 
+            background-color: #669;
+
+            -webkit-border-radius: 100px; 
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+
+        /* 空心圆角 */
+        #circle-circle {
+            width: 200px; 
+            height: 200px; 
+            background-color: #fff; 
+            
+            border: 3px #a72525 solid;
+
+            -webkit-border-radius: 100px; 
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+
+        /* 虚线圆角（火狐不支持） */
+        #circle-dashed {
+            width: 200px; 
+            height: 200px; 
+            background-color: #fff; 
+            
+            border: 3px #a72525 dashed; 
+
+            -webkit-border-radius: 100px; 
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+
+        /* 二分之一向上圆角 */
+        #circle-up { 
+            width: 100px; 
+            height: 0px;
+
+            border: 0 solid transparent;
+            border-top: 100px solid #669;
+            border-right: 100px solid #669;
+
+            -webkit-border-radius: 100px 100px 0 0; 
+            -moz-border-radius: 100px 100px 0 0; 
+            border-radius: 100px 100px 0 0; 
+        }
+        
+        /* 二分之一向下圆角 */
+        #circle-down { 
+            width: 100px; 
+            height: 0px;
+
+            border: 0 solid transparent;
+            border-bottom: 100px solid #669;
+            border-right: 100px solid #669;  
+            
+            -webkit-border-radius: 0 0 100px 100px; 
+            -moz-border-radius: 0 0 100px 100px; 
+            border-radius: 0 0 100px 100px; 
+        }
+
+        /* 二分之一向左圆角 */
+        #circle-left { 
+            width: 100px; 
+            height: 0px;
+
+            border:0 solid transparent;
+            border-bottom:100px solid #669;
+            border-top:100px solid #669;  
+
+            -webkit-border-radius: 100px 0 0 100px;
+            -moz-border-radius: 100px 0 0 100px; 
+            border-radius: 100px 0 0 100px; 
+        }
+        
+        /* 二分之一向右圆角 */
+        #circle-right { 
+            width: 100px; 
+            height: 0px;
+
+            border: 0 solid transparent;
+            border-bottom: 100px solid #669;
+            border-top: 100px solid #669;  
+            
+            -webkit-border-radius: 0 100px 100px 0;
+            -moz-border-radius: 0 100px 100px 0;  
+            border-radius: 0 100px 100px 0; 
+        }
+
+        /* 四分之一左上圆角 */
+        #circle-lefttop { 
+            width: 100px; 
+            height: 0px;
+
+            border: 0 solid transparent;
+            border-top: 100px solid #669;  
+
+            -webkit-border-radius: 0 100px 100px 0;
+            -moz-border-radius: 0 100px 100px 0;
+            border-radius: 100px 0 0 0; 
+        }
+        
+        /* 四分之一右上圆角 */
+        #circle-righttop {
+            width: 100px;
+            height: 0px;
+
+            border: 0 solid transparent;
+            border-top: 100px solid #669;  
+            
+            -webkit-border-radius: 0 100px 0 0;
+            -moz-border-radius: 0 100px 0 0;
+            border-radius: 0 100px 0 0;
+        }
+        
+        /* 四分之一左下圆角 */
+        #circle-leftbottom { 
+            width: 100px; 
+            height: 0px;
+
+            border: 0 solid transparent;
+            border-bottom: 100px solid #669;
+
+            -webkit-border-radius: 0 0 0 100px;
+            -moz-border-radius: 0 0 0 100px;
+            border-radius: 0 0 0 100px; 
+        }
+
+        /* 四分之一右下圆角 */
+        #circle-rightbottom { 
+            width: 100px; 
+            height: 0px;
+            border: 0 solid transparent;
+            border-bottom: 100px solid #669; 
+            
+            -webkit-border-radius: 0 0 100px 0;
+            -moz-border-radius: 0 0 100px 0;
+            border-radius: 0 0 100px 0; 
+        }
+
+        /* 小尾巴：四分之一左上圆角衍生 */
+        #tail-lefttop {
+            width: 100px;
+            height: 100px;
+
+            border: 0 solid transparent; 
+            border-top: 30px solid #669;
+            
+            -webkit-border-radius: 100px 0 0 0;
+            -moz-border-radius: 100px 0 0 0;
+            border-radius: 100px 0 0 0;
+        }
+        
+        /* 小尾巴：四分之一右上圆角衍生 */
+        #tail-righttop {
+            width: 100px;
+            height: 100px;
+
+            border: 0 solid transparent; 
+            border-top: 30px solid #669;
+
+            -webkit-border-radius: 0 100px 0 0;
+            -moz-border-radius: 0 100px 0 0;
+            border-radius: 0 100px 0 0;
+        }
+        
+        /* 小尾巴：四分之一左下圆角衍生 */
+        #tail-leftbottom {
+            width: 100px;
+            height: 100px;
+
+            border: 0 solid transparent;
+            border-bottom: 30px solid #669;
+
+            -webkit-border-radius: 0 0 0 100px;
+            -moz-border-radius: 0 0 0 100px;
+            border-radius: 0 0 0 100px;
+        }
+
+        /* 小尾巴：四分之一右下圆角衍生 */
+        #tail-rightbottom {
+            width: 100px;
+            height: 100px;
+
+            border: 0 solid transparent; 
+            border-bottom: 30px solid #669;
+
+            -webkit-border-radius: 0 0 100px 0;
+            -moz-border-radius: 0 0 100px 0;
+            border-radius: 0 0 100px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="circle"></div>
+    <br/><br/>
+    <div id="circle-circle"></div>
+    <br/><br/>
+    <div id="circle-dashed"></div>
+    <br/><br/>
+    <div id="circle-up"></div>
+    <br/><br/>
+    <div id="circle-down"></div>
+    <br/><br/>
+    <div id="circle-left"></div>
+    <br/><br/>
+    <div id="circle-right"></div>
+    <br/><br/>
+    <div id="circle-lefttop"></div>
+    <br/><br/>
+    <div id="circle-righttop"></div>
+    <br/><br/>
+    <div id="circle-leftbottom"></div>
+    <br/><br/>
+    <div id="circle-rightbottom"></div>
+    <br/><br/>
+    <div id="tail-lefttop"></div>
+    <br/><br/>
+    <div id="tail-righttop"></div>
+    <br/><br/>
+    <div id="tail-leftbottom"></div>
+    <br/><br/>
+    <div id="tail-rightbottom"></div>
+</body>
+</html>
