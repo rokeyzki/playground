@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
     <title>媒体查询（响应式设计）</title>
-    
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
 
     <style type="text/css">
         /* 当页面宽度小于760px时使用的样式 */
@@ -19,7 +14,7 @@
                 background-color: red;
             }
         }
-        
+
         /* 当页面宽度大于760px时使用的样式 */
         @media screen and (min-width: 760px) {
             div {
@@ -44,6 +39,11 @@
             }
         }
     </style>
+
+    <!--[if lte IE 8]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
     <div>12345</div>
