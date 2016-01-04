@@ -2,17 +2,23 @@
 <html lang="zh-cmn-Hans">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>伪类选择器</title>
   <style>
     a:link    {color:blue;}
     a:visited {color:green;}
     a:hover   {color:yellow;}
     a:active  {color:red;}
-    .first-name:focus  {color:pink;}
+    .foo:focus  {color:pink;}
+    li:first-child {color:orange;}
   </style>
 </head>
 <body>
   <p>将鼠标指针移动到这个链接上：<a href="http://www.w3school.com.cn">w3school.com.cn</a></p>
-  <input class="first-name" value="I'll be red when focused">
+  <input class="foo" value="I'll be red when focused">
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
 </body>
 </html>

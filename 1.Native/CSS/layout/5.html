@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
+  <!--[if lte IE 8]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
+  <!--[if lte IE 8]>
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
+  <!--<![endif]-->
+  <style>
+    html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
+      font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+      font-size: 16px;
+      color: #888;
+      text-shadow: 0px 1px 0px #fff;
+      text-rendering: auto;
+    }
+
+    /* 带边框居右 */
+    .article-right {
+      max-width: 400px; /* 设置最大宽度 */
+      padding: 10px; /* 设置内边距 */
+      box-sizing: border-box; /* 内边距计算到盒子宽度中 */
+
+      float: right;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      border-left: 1px solid #888;
+      float: left;
+      padding: 0 10px;
+    }
+
+    li:first-child {
+      border-left: none;
+    }
+
+    li a {
+      font-size: 0.85em;
+      color: #888;
+      text-decoration: none;
+    }
+
+    #foo a {
+      padding-left: 20px;
+      background-image: url(http://p5.qhimg.com/t01619a16b3f4a98bc4.png);
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <header class="article-right">
+    <ul>
+      <li><a href="#">导航一</a></li>
+      <li><a href="#">导航二</a></li>
+      <li><a href="#">导航三</a></li>
+      <li id="foo">
+        <a href="http://haosou.com">导航四</a>
+      </li>
+    </ul>
+  </header>
+  <div class="clear"></div>
+</body>
+</html>
