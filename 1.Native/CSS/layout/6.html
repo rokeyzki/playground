@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
+  <!--[if lte IE 8]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
+  <!--[if lte IE 8]>
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
+  <!--<![endif]-->
+  <style>
+    html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
+      font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+      font-size: 16px;
+      color: #888;
+      text-shadow: 0px 1px 0px #fff;
+      text-rendering: auto;
+    }
+
+    .section-right {
+      /* 带边距居右 .section-right */
+      float: right; /* 设置块级向右浮动 */
+
+      max-width: 500px; /* 设置最大宽度 */
+      padding: 30px; /* 设置内边距 */
+      box-sizing: border-box; /* 内边距计算到盒子宽度中 */
+      /* 注意：带边框居右，后面需清除右浮动 .clear{clear: both;} */
+    }
+
+    .clear{clear: both;}
+  </style>
+</head>
+<body>
+  <!-- 命令规则
+  导航栏：<nav>
+  头部区：<header>
+  侧边栏：<div id="sidebar">
+  容器：<div id="container">
+  章节：<section>
+  底部区：<footer>
+  -->
+  <section class="section-right">
+    <div id="title">
+      <h3>兰亭集序</h3>
+    </div>
+    <div id="content">
+      <p>永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，修禊事也。群贤毕至，少长咸集。此地有崇山峻岭，茂林修竹；又有清流激湍，映带左右，引以为流觞曲水，列坐其次。虽无丝竹管弦之盛，一觞一咏，亦足以畅叙幽情。是日也，天朗气清，惠风和畅，仰观宇宙之大，俯察品类之盛，所以游目骋怀，足以极视听之娱，信可乐也。</p>
+      <p>夫人之相与，俯仰一世，或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。虽趣舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云：“死生亦大矣。”岂不痛哉！</p>
+      <p>每览昔人兴感之由，若合一契，未尝不临文嗟悼，不能喻之于怀。固知一死生为虚诞，齐彭殇为妄作。后之视今，亦犹今之视昔。悲夫！故列叙时人，录其所述，虽世殊事异，所以兴怀，其致一也。后之览者，亦将有感于斯文。</p>
+    </div>
+  </section>
+  <img src="holder.js/300x200?text=Hello&bg=#67DFEB">
+
+  <!-- holder.js：DEMO图片生成脚本，使用示例：<img src="holder.js/300x200?text=Hello&bg=#67DFEB"> -->
+  <script src="https://cdn.bootcss.com/holder/2.9.0/holder.min.js"></script>
+</body>
+</html>
