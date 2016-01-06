@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>{$tw[titles]}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+    <meta name="keywords" content="tw[seo_keywords]}" />
+    <meta name="description" content="{$tw[seo_description]}" />
+    <meta name="author" content="oulve, hi@oulve.com" />
+    <meta name="robots" content="index,follow">
+    <meta name="google" value="notranslate" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{$tw[webdir]}favicon.ico" />
+    <link rel="bookmark" href="{$tw[webdir]}favicon.ico" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./asset/base/css/oulve.css">
+    <link rel="stylesheet" href="./asset/self/css/style.css">
+</head>
+<body style="height: 1200px;">
+
+<div class="container">
+
+    <div class="panel">
+        <div class="panel-head">动画</div>
+        <div class="panel-body">
+            <div class="fadein">淡入动画</div>
+            <span class="fadeout">淡出动画</span>
+            <div id="test" class="text-large font-simsun text-shadow-small font-gradient" style="width: 300px; -webkit-background-clip: text; background-clip: text;">淡入.fadein 水纹动画测试</div>
+            <!--  -webkit-background-clip: text; background-clip: text; -->
+            <script>
+                var isAnim = false;
+                var timer;
+                var delay = 10; // 修改这个让效果减速
+                var start = 0;
+                var test = document.getElementById('test');
+                var end = parseInt(test.style.width);
+                function anim() {
+                    if (start > end) {
+                        clearTimeout(timer);
+                        start = 0;
+                        isAnim = false;
+                    } else {
+                        // -webkit-gradient(radial, 16 16, 799, 16 16, 879, from(rgb(0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.0980392)), to(rgb(0, 0, 0)));
+                        test.style.webkitMaskImage = "-webkit-gradient(radial, 16 16, " + start + ", 16 16, " + (start + 15) + ", from(rgba(0, 0, 0, 1)),color-stop(0.5, rgba(0, 0, 0, 0.0980392)),to(rgba(0, 0, 0, 1)))";
+                        timer = setTimeout(anim, delay);
+                        start++;
+                    }
+                }
+                test.onmouseover = function () {
+                    if (!isAnim) {
+                        isAnim = true;
+                        anim();
+                    }
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="border border-small border-dashed" style="height: 1000px;">虚线边框</div>
+
+    <div class="panel">
+        <div class="panel-head">动画</div>
+        <div class="panel-body">
+            <div class="fadein">淡入动画</div>
+            <span class="fadeout">淡出动画</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- script -->
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"><\/script>')</script>
+<!--[if lt IE 9]>
+<script src="./asset/base/js/respond.min.js"></script>
+<script>if(window.respond){document.write('<script src="./asset/base/js/oulve.js"><\/script>')}</script>
+<![endif]-->
+<!--[if IE 9]>
+<script src="./asset/base/js/oulve.js"></script>
+<![endif]-->
+<!--[if !IE]><!-->
+<script src="./asset/base/js/oulve.js"></script>
+<!--<![endif]-->
+<script src="./asset/self/js/default.js" async></script>
+</body>
+</html>

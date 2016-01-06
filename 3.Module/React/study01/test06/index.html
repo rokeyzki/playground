@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <script src="../../build/react.js"></script>
+    <script src="../../build/JSXTransformer.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+    
+    <script type="text/jsx">
+       
+        
+        var Comment = React.createClass({
+            render: function() {
+                return (  
+                    <div className="comment">
+                        <h2 className="commentAuthor">
+                            {this.props.author}
+                        </h2>
+                        {this.props.text}
+                        {console.log(this.props)}
+                    </div>
+                );
+            }
+        });
+
+        var CommentList = React.createClass({
+            render: function() {
+                var commentNodes = this.props.data.map(function (comment) {
+                    return (
+                        <Comment author={comment.author} text={comment.text} />
+                    );
+                });
+
+                return (
+                    <div className="commentList">
+                        {commentNodes}
+                    </div>
+                );
+            }
+        });
+
+        var CommentForm = React.createClass({
+            render: function() {
+                return (
+                    <div className="commentForm">
+                        Hello, world! I am a CommentForm.
+                    </div>
+                );
+            }
+        });
+    
+        var CommentBox = React.createClass({
+            // getInitialState()在组件的生命周期中仅执行一次，设置组件的初始化状态。
+            getInitialState: function() {
+                // 这里需要初始化所有组件内需要提供的参数（对象形式），如果不需要参数则返回null
+                // 这里返回data是因为CommentBox自身的render里，<CommentList>标签有使用到{this.state.data} 
+                return {data: []};
+            },
+            
+            // componentDidMount是一个在组件被渲染的时候React自动调用的方法
+            componentDidMount: function() {
+                this.loadCommentsFromServer();
+                // BOM: setInterval方法指定某个任务每隔一段时间就执行一次，也就是无限次的定时执行
+                setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+            },
+            
+            // loadCommentsFromServer 是自定义方法，通过this.loadCommentsFromServer() 可以调用
+            loadCommentsFromServer: function() {
+                $.ajax({
+                    url: this.props.url,
+                    dataType: 'json',
+                    success: function(data) {
+                        this.setState({data: data});
+                    }.bind(this),
+                    error: function(xhr, status, err) {
+                        console.error(this.props.url, status, err.toString());
+                    }.bind(this)
+                });
+            },
+            
+            render: function() {
+                return (
+                    <div className="commentBox">
+                        <h1>Comments</h1>
+                        <CommentList data={this.state.data} />
+                        <br/><br/>
+                        <hr/>
+                        <br/><br/>
+                        <CommentForm />
+                    </div>
+                );
+            }
+        });
+
+        React.render(
+            <CommentBox url="./comments.json" pollInterval={2000} />,
+            document.getElementById('content')
+        );
+    </script>
+</body>
+</html>

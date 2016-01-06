@@ -1,0 +1,52 @@
+[{
+    "1180": {
+        "src": "./asset/self/img/index/banner/1-1180.png",
+        "alt": "test"
+    },
+    "980": {
+        "src": "./asset/self/img/index/banner/1-980.png",
+        "alt": "test"
+    },
+    "740": {
+        "src": "./asset/self/img/index/banner/1-740.png",
+        "alt": "test"
+    },
+    "400": {
+        "src": "./asset/self/img/index/banner/1-400.png",
+        "alt": "test"
+    }
+}, {
+    "1180": {
+        "src": "./asset/self/img/index/banner/2-1180.png",
+        "alt": "test"
+    },
+    "980": {
+        "src": "./asset/self/img/index/banner/2-980.png",
+        "alt": "test"
+    },
+    "740": {
+        "src": "./asset/self/img/index/banner/2-740.png",
+        "alt": "test"
+    },
+    "400": {
+        "src": "./asset/self/img/index/banner/2-400.png",
+        "alt": "test"
+    }
+}, {
+    "1180": {
+        "src": "./asset/self/img/index/banner/3-1180.png",
+        "alt": "test"
+    },
+    "980": {
+        "src": "./asset/self/img/index/banner/3-980.png",
+        "alt": "test"
+    },
+    "740": {
+        "src": "./asset/self/img/index/banner/3-740.png",
+        "alt": "test"
+    },
+    "400": {
+        "src": "./asset/self/img/index/banner/3-400.png",
+        "alt": "test"
+    }
+}]
