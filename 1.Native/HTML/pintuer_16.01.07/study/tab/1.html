@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8"> <!-- 字符编码：utf-8 -->
+  <meta name="renderer" content="webkit"> <!-- 针对多核浏览器优先使用 webkit 内核 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 优先使用 IE 最新版本和 Chrome -->
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> <!-- 禁止百度手机自动转码 -->
+  <meta name="google" value="notranslate" /> <!-- 禁止Chrome自动翻译 -->
+  <meta name="format-detection" content="telphone=no, email=no"/> <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+  <title>Tab</title> <!-- SEO：定义页面标题 -->
+  <meta name="keywords" content="keywords" /> <!-- SEO：定义页面关键词 -->
+  <meta name="description" content="description" /> <!-- SEO：页面描述内容 -->
+  <meta name="author" content="Charles Lim,hi@oulve.com" /> <!-- SEO：定义页面作者 -->
+  <meta name="robots" content="index,follow"> <!-- SEO：定义页面搜索引擎索引方式 -->
+  <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
+  <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
+  <!--[if lte IE 8]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
+  <!--[if lte IE 8]>
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
+  <!--<![endif]-->
+  <style>
+    html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
+      font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+      font-size: 16px;
+      color: #888;
+      text-shadow: 0px 1px 0px #fff;
+      text-rendering: auto;
+    }
+
+    ol, ul, li {margin:0;padding:0;border:0;font-size:14px;font:inherit;vertical-align:baseline;}
+
+    .tab .tab-head strong{float:left;padding:8px 20px 0 0;line-height:20px;}
+    .tab .tab-more{float:right;margin:10px 0 0 10px;font-size:12px;}
+    .tab .tab-nav{list-style:none;}
+    .tab .tab-nav li{display:inline-block;}
+    .tab .tab-nav li a{color:#333;padding:8px 20px;display:block;border:solid 1px #ddd;line-height:20px;border-bottom:none;border-radius:4px 4px 0 0;}
+    .tab .tab-nav .active{background-color:#fff;}
+    .tab .tab-nav .active a{cursor:default;}
+    .tab .tab-body{border-top:solid 1px #ddd;margin-top:-1px;padding-top:15px;}
+    .tab .tab-body-bordered{border:solid 1px #ddd;border-radius:4px;padding:15px;}
+    .tab .tab-body .tab-panel{display:none;}
+    .tab .tab-body .active{display:block;}
+    .tab.tab-small strong{padding-top:3px;}
+    .tab.tab-small .tab-more{margin:5px 0 0 10px;}
+    .tab.tab-small li a{padding:3px 10px;}
+  </style>
+</head>
+<body>
+
+  <div class="tab">
+    <div class="tab-head">
+      <strong>拼图</strong> <span class="tab-more"><a href="#">更多</a></span>
+      <ul class="tab-nav">
+        <li class="active"><a href="#tab-start">起步</a> </li>
+        <li><a href="#tab-css">样式</a> </li>
+        <li><a href="#tab-units">元件</a> </li>
+      </ul>
+    </div>
+    <div class="tab-body">
+      <div class="tab-panel active" id="tab-start">
+        拼图框架使用准备、基本的设置等信息。</div>
+      <div class="tab-panel" id="tab-css">
+        重新定义常用的CSS，对文本、图像、按钮、背景、表格等样式重新设置。</div>
+      <div class="tab-panel" id="tab-units">
+        常见的、可重复使用的样式组合，图标、标签、下拉菜单、按钮组、媒体对象、表单、面板等。</div>
+    </div>
+  </div>
+
+
+  <div class="tab" data-toggle="hover">
+    <div class="tab-head">
+      <strong>拼图</strong> <span class="tab-more"><a href="#">更多</a></span>
+      <ul class="tab-nav">
+        <li class=""><a href="#tab-start2">起步</a> </li>
+        <li class=""><a href="#tab-css2">样式</a> </li>
+        <li class="active"><a href="#tab-units2">元件</a> </li>
+      </ul>
+    </div>
+    <div class="tab-body tab-body-bordered">
+      <div class="tab-panel" id="tab-start2">
+        拼图框架使用准备、基本的设置等信息。</div>
+      <div class="tab-panel" id="tab-css2">
+        重新定义常用的CSS，对文本、图像、按钮、背景、表格等样式重新设置。</div>
+      <div class="tab-panel active" id="tab-units2">
+        常见的、可重复使用的样式组合，图标、标签、下拉菜单、按钮组、媒体对象、表单、面板等。</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $('.tab .tab-nav li').each(function(){
+          var e=$(this);
+          var trigger=e.closest('.tab').attr("data-toggle");
+          if (trigger=="hover"){
+              e.mouseover(function(){
+                  $showtabs(e);
+              });
+              e.click(function(){
+                  return false;
+              });
+          }else{
+              e.click(function(){
+                  $showtabs(e);
+                  return false;
+              });
+          }
+      });
+      $showtabs=function(e){
+          var detail=e.children("a").attr("href");
+          e.closest('.tab .tab-nav').find("li").removeClass("active");
+          e.closest('.tab').find(".tab-body .tab-panel").removeClass("active");
+          e.addClass("active");
+          $(detail).addClass("active");
+      };
+    });
+  </script>
+</body>
+</html>
