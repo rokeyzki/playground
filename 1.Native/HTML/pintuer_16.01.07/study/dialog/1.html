@@ -29,6 +29,8 @@
   <!--[if gt IE 8]><!-->
     <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
   <!--<![endif]-->
+  <!-- font-awesome.css：图标库，使用示例：<i class="fa fa-camera-retro"></i> -->
+  <link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <style>
     html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
       font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
@@ -47,6 +49,14 @@
     .dialog .dialog-body{padding:15px 20px;}
     .dialog .dialog-foot{text-align:right;border-top:solid 1px #ddd;}
     .dialog.open{display:block;}
+
+    /* 额外动画，非必须 */
+    .rotate,.rotate-hover{-webkit-animation:2s infinite linear;-moz-animation:2s infinite linear;-ms-animation:2s infinite linear;animation:2s infinite linear;}
+    .rotate,.rotate-hover:hover{-webkit-animation-name:a-rotate;-moz-animation-name:a-rotate;-ms-animation-name:a-rotate;animation-name:a-rotate;}
+    @-webkit-keyframes a-rotate{0%{-webkit-transform:rotate(0deg);}100%{-webkit-transform:rotate(359deg);}}
+    @-moz-keyframes a-rotate{0%{-moz-transform:rotate(0deg);}100%{-moz-transform:rotate(359deg);}}
+    @-ms-keyframes a-rotate{0%{-ms-transform:rotate(0deg);}100%{-ms-transform:rotate(359deg);}}
+    @keyframes a-rotate{0%{transform:rotate(0deg);}100%{transform:rotate(359deg);}}
   </style>
 </head>
 <body>
@@ -55,7 +65,7 @@
   <div id="mydialog">
       <div class="dialog">
           <div class="dialog-head">
-              <span class="close rotate-hover"></span>
+              <span class="close rotate-hover"><i class="fa fa-close"></i></span>
               <strong>对话框标题</strong>
           </div>
           <div class="dialog-body">
