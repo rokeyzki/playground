@@ -1,0 +1,11 @@
+<body>
+  <div id="foo" style="color: red">hello world</div>
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script>
+    // 取属性值
+    var attr = $('#foo').attr('style');
+    console.log(attr); // color: red
+    // 赋属性值
+    $('#foo').attr('style', 'color: blue');
+  </script>
+</body>

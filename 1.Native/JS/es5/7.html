@@ -1,0 +1,14 @@
+<body>
+  <style>
+    .test {
+      color: red;
+    }
+  </style>
+  <div id="foo">hello world</div>
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script>
+    $('#foo').bind('click', function(){
+      $('#foo').toggleClass('test');
+    });
+  </script>
+</body>

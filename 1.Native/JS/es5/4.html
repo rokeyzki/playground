@@ -1,0 +1,13 @@
+<body>
+  <style>
+    .test {
+      color: red;
+    }
+  </style>
+  <div id="foo" class="test">hello world</div>
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script>
+    var status = $('#foo').hasClass('test');
+    console.log(status); // true
+  </script>
+</body>
