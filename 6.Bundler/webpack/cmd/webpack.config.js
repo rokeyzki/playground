@@ -14,5 +14,9 @@ module.exports = {
       }
     ]
   },
+  // externals: {
+  //   // require("jquery") 是引用自外部模块的
+  //   "jquery": "$" // 对应全局变量 jQuery
+  // },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
 };
