@@ -1,0 +1,1 @@
+!function(r){function t(o){if(e[o])return e[o].exports;var n=e[o]={exports:{},id:o,loaded:!1};return r[o].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var e={};return t.m=r,t.c=e,t.p="",t(0)}([function(r,t){var e,o,n,a,l;for(l=[1,2,3,4],e=n=0,a=l.length;a>n;e=++n)o=l[e],alert("当前数字是 "+e+", 当前索引是 "+o)}]);

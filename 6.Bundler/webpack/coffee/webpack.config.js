@@ -8,6 +8,5 @@ module.exports = {
     loaders: [
       { test: /\.coffee$/, loader: 'coffee-loader' }
     ]
-  },
-  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
+  }
 };
