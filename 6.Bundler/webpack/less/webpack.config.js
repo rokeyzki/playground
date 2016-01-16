@@ -1,5 +1,3 @@
-var autoprefixer = require('autoprefixer');
-
 module.exports = {
   entry: "./entry.less",
   output: {
@@ -8,8 +6,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.less$/, loader: "style-loader!css-loader!postcss-loader!less-loader" }
+      { test: /\.less$/, loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions!less-loader" }
     ]
-  },
-  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
+  }
 };
