@@ -14,8 +14,28 @@
   <meta name="robots" content="index,follow"> <!-- SEO：定义页面搜索引擎索引方式 -->
   <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
   <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
+  <!--[if lte IE 8]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
+  <!--[if lte IE 8]>
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
+  <!--<![endif]-->
+  
+  <link rel="stylesheet" href="./assets/style.css" type="text/css" media="all" />
 </head>
 <body>
+  <div id="anima"></div>
+
   <p>123</p>
   <div class="test1"></div>
   <div class="test2"></div>
@@ -33,6 +53,7 @@
   <div class="stop"></div>
   <div class="important"></div>
 
-  <script src="bundle.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+  <script src="./assets/app.js"></script>
 </body>
 </html>

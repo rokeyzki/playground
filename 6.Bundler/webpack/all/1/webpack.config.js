@@ -1,8 +1,10 @@
+var ExtractTextPlugin = require("extract-text-webpack-plugin"); // 该插件使CSS单独打包成一个文件：sudo npm install extract-text-webpack-plugin
+
 module.exports = {
   entry: "./entry.js",
   output: {
-    path: __dirname,
-    filename: "bundle.js"
+    path: "./assets",
+    filename: "app.js"
   },
   module: {
     loaders: [
@@ -17,10 +19,10 @@ module.exports = {
         loader: 'coffee-loader'
       },{
         test: /\.css$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions'
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 2 versions")
       },{
         test: /\.less$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions!less-loader'
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 2 versions!less-loader")
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
@@ -30,5 +32,9 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
+  plugins: [
+    new ExtractTextPlugin("style.css")
+  ]
 };
