@@ -2,7 +2,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin"); // 该插件使C
 
 module.exports = {
   entry: {
-    mainpage: './index.js',
+    mainpage: './index.entry.js',
   },
   output: {
     path: './assets',
@@ -10,30 +10,30 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/,
+      {
+        test: /\.jsx$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        loader: 'babel-loader', // sudo npm install babel-loader babel-preset-es2015 babel-preset-react
         query: {
           presets: ['react', 'es2015'] // es6转es5 依赖 babel-preset-es2015，而jsx转es5 依赖 babel-preset-react，详见 https://www.npmjs.com/package/babel-loader
         }
       },{
         test: /\.coffee$/,
-        loader: 'coffee-loader'
+        loader: 'coffee-loader' // sudo npm install coffee-script coffee-loader
       },{
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 2 versions")
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 2 versions") // sudo npm install style-loader css-loader autoprefixer-loader
       },{
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 2 versions!less-loader")
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 2 versions!less-loader") // sudo npm install less less-loader
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'url-loader?limit=10000&name=img/[hash:8].[ext]' // sudo npm install url-loader
+          'url-loader?limit=10000&name=img/[hash:8].[ext]' // sudo npm install file-loader url-loader
         ]
       }
     ]
   },
-  // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
   plugins: [
     new ExtractTextPlugin('[name].min.css')
   ]
