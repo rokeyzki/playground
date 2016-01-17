@@ -1,0 +1,39 @@
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+  font-size: 16px;
+  color: #888;
+  text-shadow: 0px 1px 0px #fff;
+  text-rendering: auto;
+}
+
+#anima {
+  width: 100px;
+  height: 100px;
+  background-color: #FF3F2A;
+  position: relative;
+  animation: foo 2s ease-in infinite alternate;
+}
+
+@keyframes foo {
+  0% {
+    background-color: #FF984C;
+  }
+  25% {
+    background-color: #FF73A5;
+  }
+  50% {
+    background-color: #9264FF;
+  }
+  75% {
+    background-color: #51A8FF;
+  }
+  100% {
+    background-color: #5BFF91;
+  }
+}
+
+#image {
+  width: 100px;
+  height: 200px;
+  background-image: url('images/foo.jpg');
+}
