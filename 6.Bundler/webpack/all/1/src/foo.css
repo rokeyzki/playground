@@ -12,7 +12,6 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
   background-color: #FF3F2A;
   position: relative;
   animation: foo 2s ease-in infinite alternate;
-
 }
 
 @keyframes foo {
@@ -31,4 +30,10 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
   100% {
     background-color: #5BFF91;
   }
+}
+
+#image {
+  width: 100px;
+  height: 200px;
+  background-image: './src/foo.jpg';
 }
