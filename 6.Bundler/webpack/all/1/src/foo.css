@@ -35,5 +35,5 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
 #image {
   width: 100px;
   height: 200px;
-  background-image: './src/foo.jpg';
+  background-image: url('images/foo.jpg');
 }
