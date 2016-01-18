@@ -26,16 +26,17 @@ module.exports = {
         loader: 'coffee-loader' // sudo npm install coffee-script coffee-loader
       },{
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 2 versions') // sudo npm install style-loader css-loader autoprefixer-loader
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?{browsers:["last 2 versions", "safari 5", "ie 8", "ie 9", "opera 12.1", "ios 6", "android 4"]}') // sudo npm install style-loader css-loader autoprefixer-loader
       },{
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 2 versions!less-loader') // sudo npm install less less-loader
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?{browsers:["last 2 versions", "safari 5", "ie 8", "ie 9", "opera 12.1", "ios 6", "android 4"]}!less-loader') // sudo npm install less less-loader
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'url-loader?hash=sha512&limit=10000&name=img/[hash].[ext]' // 第一种图片压缩方式：sudo npm install file-loader url-loader
-          // 'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]',
-          // 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false' // 第二种图片压缩方式：sudo npm install file-loader image-webpack-loader
+          'url-loader?hash=sha512&limit=10000&name=img/[hash].[ext]', // 第一种图片压缩方式：sudo npm install file-loader url-loader img-loader
+          'img?minimize'
+          // 'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]', // 第二种图片压缩方式：sudo npm install file-loader image-webpack-loader
+          // 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
         ]
       }
     ]
@@ -45,5 +46,23 @@ module.exports = {
     new BannerPlugin('This file is created by Charles Lim'),
     new CommonsChunkPlugin('common.min.js'),
     new UglifyJsPlugin({compress:{warnings: false}})
-  ]
+  ],
+  imagemin: {
+    gifsicle: { interlaced: false },
+    jpegtran: {
+      progressive: true,
+      arithmetic: false
+    },
+    optipng: { optimizationLevel: 5 },
+    pngquant: {
+      floyd: 0.5,
+      speed: 2
+    },
+    svgo: {
+      plugins: [
+        { removeTitle: true },
+        { convertPathData: false }
+      ]
+    }
+  }
 };
