@@ -33,9 +33,9 @@ module.exports = {
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'url-loader?hash=sha512&limit=10000&name=img/[hash].[ext]' // 第一种图片压缩方式：sudo npm install file-loader url-loader
-          // 'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]',
-          // 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false' // 第二种图片压缩方式：sudo npm install file-loader image-webpack-loader
+          // 'url-loader?hash=sha512&limit=10000&name=img/[hash].[ext]' // 第一种图片压缩方式：sudo npm install file-loader url-loader
+          'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]',
+          'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false' // 第二种图片压缩方式：sudo npm install file-loader image-webpack-loader
         ]
       }
     ]
