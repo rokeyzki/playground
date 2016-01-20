@@ -7,7 +7,7 @@ var db = mongoose.connection;
 db.on('error',console.error);
 db.once('open',function(){
   console.log('ok');
-  //在这里创建你的模式和模型
+  // 在这里创建你的模式和模型
   // Schema 模式
   var BookSchema = new mongoose.Schema({
     name: String,
