@@ -83,8 +83,10 @@ db.once('open',function(){
   });
 });   
 
+// mongoose.connect('mongodb://username:password@host:port/database?options...');
 // mongoose.connect('mongodb://127.0.0.1:10000/foo');
 mongoose.connect('mongodb://127.0.0.1/foo');
+// mongoose.connect('mongodb://u7RKyfdLB1S5qIQE:pL8bViHBvCOq2YmSr@10.10.72.139:27017/7KUIGSPZxMVt1C30');
 
 router.get('/',
   function *(next) {
@@ -102,5 +104,5 @@ router.get('/',
 // app.use(cors());
 app.use(router.routes());
 
-app.listen(3000);
+app.listen(8080);
 console.log('start');
