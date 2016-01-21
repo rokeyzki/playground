@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@prim: #53e3a6;
+
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
+  font-family: "Source Sans Pro", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+  font-size: 16px;
+  color: #888;
+  text-shadow: 0px 1px 0px #fff;
+  text-rendering: auto;
+
+  background-color: #67DFEB;
+  color: white;
+  font-weight: 300;
+}
+
+.section-center {
+  /* 带边距居中 .section-center */
+  margin: 0 auto; /* 设置块级居中 */
+
+  max-width: 400px; /* 设置最大宽度 */
+  padding: 50px; /* 设置内边距 */
+  box-sizing: border-box; /* 内边距计算到盒子宽度中 */
+
+  border: 1px solid white;
+}
+
+form{
+  input{
+    display: block;
+    outline: 0;
+    border: 1px solid fade(white, 40%);
+    background-color: fade(white, 20%);
+    width: 250px;
+
+    border-radius: 3px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    margin: 0 auto 10px;
+    text-align: center;
+
+    color: white;
+
+    transition-duration: 0.25s;
+
+    &:hover{
+      background-color: fade(white, 40%);
+    }
+
+    &:focus{
+      background-color: white;
+      width: 300px;
+
+      color: @prim;
+    }
+  }
+
+  button{
+    display: block;
+    outline: 0;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    color: @prim;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.25s;
+
+    &:hover{
+      background-color: rgb(245, 247, 249);
+    }
+  }
+}
