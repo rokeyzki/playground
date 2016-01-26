@@ -9,7 +9,7 @@
 * 按钮 button
 * 日期选择器 date
 * 数量选择器 number
-* 富文本输入框 textarea 
+* 富文本输入框 textarea
 * 上传控件 upload
 * 截图控件 image
 
