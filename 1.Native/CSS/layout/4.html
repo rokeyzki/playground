@@ -10,6 +10,15 @@
     a:active  {color:red;}
     .foo:focus  {color:pink;}
     li:first-child {color:orange;}
+    .foo2::selection {
+      text-shadow: 1px 1px 1px red;
+      color:#47D1EB;
+    }
+
+    .foo2::before {
+      content: 'hahaha';
+      color:#47D1EB;
+    }
   </style>
 </head>
 <body>
@@ -20,5 +29,7 @@
     <li>2</li>
     <li>3</li>
   </ul>
+  <p class="foo2">也尝试选中在这个p标签中的文本</p>
+  <p class="foo3">也尝试选中在这个p标签中的文本</p>
 </body>
 </html>

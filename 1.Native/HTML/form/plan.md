@@ -2,11 +2,11 @@
 ***
 
 ### 组件
-* 输入框 input
-* 单选框 radio
-* 多选框 checkbox
-* 下拉框 select
-* 按钮 button
+* 输入框 input 关键 OK
+* 单选框 radio 关键 OK
+* 多选框 checkbox 关键 OK
+* 下拉框 select 关键 OK
+* 按钮 button 关键
 * 日期选择器 date
 * 数量选择器 number
 * 富文本输入框 textarea
