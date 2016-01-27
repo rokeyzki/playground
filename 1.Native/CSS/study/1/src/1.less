@@ -6,17 +6,54 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
   text-rendering: auto;
 }
 
-/* == CSS 导航 0.选择器后缀(map-css-selecter) ==
+/* == CSS 导航 0.选择器后缀(css-map-selecter) ==
  *
- * == CSS 导航 1.基础(map-css-base) ==
- * == CSS 导航 2.盒子(map-css-box) ==
- * == CSS 导航 3.定位(map-css-position) ==
- * == CSS 导航 4.背景(map-css-background) ==
- * == CSS 导航 5.格式(map-css-space) ==
- * == CSS 导航 6.字体(map-css-font) ==
- * == CSS 导航 7.变形(map-css-transform) ==
- * == CSS 导航 8.动画(map-css-animation) ==
- * == CSS 导航 9.指针(map-css-cursor) ==
+ * == CSS 导航 1.基础(css-map-base) ==
+ * == CSS 导航 2.盒子(css-map-box) ==
+ * == CSS 导航 3.定位(css-map-position) ==
+ * == CSS 导航 4.背景(css-map-background) ==
+ * == CSS 导航 5.格式(css-map-space) ==
+ * == CSS 导航 6.字体(css-map-font) ==
+ * == CSS 导航 7.变形(css-map-transform) ==
+ * == CSS 导航 8.动画(css-map-animation) ==
+ * == CSS 导航 9.指针(css-map-cursor) ==
  *
- * == CSS 导航 group 1.布局(map-css-grounp-layout) ==
+ * == CSS 导航 group 1.布局(css-map-grounp-layout) ==
  */
+/* == CSS 导航 0.选择器后缀(selecter) ==
+ * == 伪类(一个冒号:) ==
+ * - 链接未被访问前：a:link
+ * - 链接已被访问后：a:visited
+ * - 鼠标置于链接上方时：a:hover
+ * - 鼠标点击链接时：a:active
+ * - 表单作为焦点被选中时：input:focus
+ * - 符合选择条件的第一个元素：li:first-child
+ *
+ * == 伪元素(两个冒号::) ==
+ * - 符合选择条件的元素前面生成子元素：div::before { content: "some text"; other style }
+ * - 符合选择条件的元素后面生成子元素：div::after { content: "some text"; other style }
+ * - 文本信息被双击时修改该文本颜色和阴影：p::selection { color:yellow; text-shadow: 1px 1px 1px red; }
+ */
+div::after {
+  /* == CSS 导航 6.字体(font) ==
+   * 字体栈：font-family
+   * 字体尺寸：font-size
+   * 字体粗细：font-weight
+   * 字体倾斜：font-style
+   * 字体划线：text-decoration
+   * 字体颜色：color
+   * 字体阴影：text-shadow
+   * 字体渲染：text-rendering
+   * 字体行高：line-height
+   * 字母大小写：text-transform
+   * 字母大写浓缩：font-variant
+   */
+  /* == 参数 ==
+   * 名字：red
+   * hex：#000000
+   * rgb：rgb(255,0,0)
+   * 透明：transparent
+   * 反转：invert
+   * 继承：inherit
+   */color: red;
+}
