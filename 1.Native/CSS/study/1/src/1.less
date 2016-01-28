@@ -34,26 +34,43 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
  * - 符合选择条件的元素后面生成子元素：div::after { content: "some text"; other style }
  * - 文本信息被双击时修改该文本颜色和阴影：p::selection { color:yellow; text-shadow: 1px 1px 1px red; }
  */
-div::after {
-  /* == CSS 导航 6.字体(font) ==
-   * 字体栈：font-family
-   * 字体尺寸：font-size
-   * 字体粗细：font-weight
-   * 字体倾斜：font-style
-   * 字体划线：text-decoration
-   * 字体颜色：color
-   * 字体阴影：text-shadow
-   * 字体渲染：text-rendering
-   * 字体行高：line-height
-   * 字母大小写：text-transform
-   * 字母大写浓缩：font-variant
-   */
-  /* == 参数 ==
-   * 名字：red
-   * hex：#000000
-   * rgb：rgb(255,0,0)
-   * 透明：transparent
-   * 反转：invert
-   * 继承：inherit
-   */color: red;
+
+/* == CSS 导航 7.变形(transform) ==
+ * 变形：transform
+ * 变形原点：transform-origin
+ */
+/* == 参数 ==
+ * 无样式：none
+ * 移动：transform(20px, 10px)
+ * 旋转：rotate(45deg)
+ * 继承：inherit
+ */// transform: value;
+
+// 矩形
+#squareAlpha {
+  width: 100px;
+  height: 100px;
+  background-color: #47D1EB;
+}
+
+// 梯形
+#squareBeta {
+  width: 100px;
+  height: 0;
+
+  border-bottom: 100px solid #47D1EB;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+// 平行四边形
+#squareGamma {
+  width: 150px;
+  height: 100px;
+
+  margin-left: 20px;
+
+  background-color: #47D1EB;
+
+  transform: skew(-20deg); // 倾斜
 }
