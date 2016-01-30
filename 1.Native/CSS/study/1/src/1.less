@@ -118,7 +118,7 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
   border-right: 100px dashed #EB4A4B;
 }
 
-// 三角
+// 边角 * 母形（矩形、三角形、梯形）
 #triangleBeta {
   width: 0px;
   height: 0px;
@@ -235,6 +235,37 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
 
   background-color: #47D1EB;
 
-  border-top: 30px solid #669;
+  border-top: 10px solid #669;
   border-radius: 50px 0 0 0;
+}
+
+// 椭圆
+#circleZeta {
+  width: 100px;
+  height: 50px;
+
+  background-color: #47D1EB;
+
+  border-radius: ~'100px/50px';
+}
+
+// 橄榄形
+#circleEta {
+  width: 100px;
+  height: 100px;
+
+  background-color: #47D1EB;
+
+  border-radius: 100px 0;
+}
+
+// 圆角 * 母形 （圆形、扇形、椭圆形、胶囊形、橄榄形、尾巴形）
+#circleTheta {
+  width: 100px;
+  height: 50px;
+
+  background-color: #47D1EB;
+
+  border-top: 10px solid #669;
+  border-radius: ~'100px/50px' 0 0 0;
 }
