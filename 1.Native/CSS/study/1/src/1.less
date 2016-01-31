@@ -75,50 +75,19 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
   transform: skew(20deg); // 倾斜
 }
 
-// 三角
+// 边角 * 母形（矩形、三角形、梯形）
 #triangleAlpha {
   width: 100px;
-  height: 100px;
+  height: 50px;
 
   background-color: #47D1EB;
 
-  /* == 后缀 ==
-   * 无：(none)
-   * 上：-top
-   * 下：-bottom
-   * 左：-left
-   * 右：-right
-   *
-   * == 参数 ==
-   * 默认值：边框宽度 边框样式 边框颜色
-   *
-   * == 详细说明 ==
-   * 1.边框宽度：none
-   * - 绝对值：px
-   * - 相对值：em
-   * - 百分比：%
-   * - 自动：auto
-   * - 继承：inherit
-   * 2.边框样式：none
-   * - 无样式：none
-   * - 隐藏：hidden
-   * - 实线：solid
-   * - 虚线：dashed
-   * - 点状：dotted
-   * - 继承：inherit
-   * 3.边框颜色：none
-   * - 名字：red
-   * - hex：#000000
-   * - rgb：rgb(255,0,0)
-   * - 透明：transparent
-   * - 反转：invert
-   * - 继承：inherit
-   */border-bottom: 100px dashed #EBDF28;
+  border-bottom: 100px dashed #EBDF28;
   border-left: 100px dashed #7AEB86;
   border-right: 100px dashed #EB4A4B;
 }
 
-// 边角 * 母形（矩形、三角形、梯形）
+// 三角
 #triangleBeta {
   width: 0px;
   height: 0px;
@@ -261,6 +230,7 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
 
 // 圆角 * 母形 （圆形、扇形、椭圆形、胶囊形、橄榄形、尾巴形）
 #circleTheta {
+  /* 圆角（圆形、扇形、椭圆形、胶囊形、橄榄形、尾巴形）之母形 #yuan-alpha */
   width: 100px;
   height: 50px;
 
