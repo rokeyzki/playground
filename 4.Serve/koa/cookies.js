@@ -1,4 +1,4 @@
-var app = require('koa')(); // koa 自动 cookies 模块
+var app = require('koa')(); // koa 自带 cookies 模块
 
 app.keys = ['secret', 'key']; // cookies 中 signed 依赖这行代码，使cookies设置签名
 

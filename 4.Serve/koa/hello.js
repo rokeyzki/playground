@@ -11,6 +11,7 @@ var app = koa();
 
 app.use(function *(){
   this.body = 'Hello koa';
+  console.log('hello');
 });
 
-app.listen(3000);
+app.listen(8080);
