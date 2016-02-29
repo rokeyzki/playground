@@ -14,6 +14,13 @@ router.get('/',
     }
 );
 
+router.get('/vue',
+    function *(next) {
+        yield this.render('vueOuter', { title: 'hello VUE', someText: 'Add some todos form KOA' });
+    }
+);
+
+
 app.use(router.routes());
 
 app.listen(8080);
