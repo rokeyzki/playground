@@ -1,7 +1,7 @@
 var app = require('koa')(),
-    session = require('koa-session');
+    session = require('koa-session'); // session 适用于保存登录状态
  
-app.keys = ['some secret'];
+app.keys = ['some secret']; // 加密盐值
 app.use(session(app));
  
 app.use(function *(next){

@@ -1,6 +1,6 @@
 var app = require('koa')(); // koa 自带 cookies 模块
 
-app.keys = ['secret', 'key']; // cookies 中 signed 依赖这行代码，使cookies设置签名
+app.keys = ['secret', 'key']; // 签名（即：加密盐值）cookies 中 signed 依赖这行代码，使cookies设置签名
 
 app.use(function *(next){
   this.body = 'koa cookies';
