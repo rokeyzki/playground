@@ -1,0 +1,36 @@
+<div id="app">
+<input v-model="newTodo" v-on:keyup.enter="addTodo">
+<ul>
+  <li v-for="todo in todos">
+    <span>${ todo.text }</span>
+    <button v-on:click="removeTodo($index)">X</button>
+  </li>
+</ul>
+</div>
+
+<script src="https://cdn.bootcss.com/vue/1.0.16/vue.js"></script>
+<script>
+Vue.config.debug = true;
+Vue.config.delimiters = ['${', '}'];
+new Vue({
+  el: '#app',
+  data: {
+    newTodo: '',
+    todos: [
+      { text: '{{ someText }}' }
+    ]
+  },
+  methods: {
+    addTodo: function () {
+      var text = this.newTodo.trim()
+      if (text) {
+        this.todos.push({ text: text })
+        this.newTodo = ''
+      }
+    },
+    removeTodo: function (index) {
+      this.todos.splice(index, 1)
+    }
+  }
+})
+</script>
