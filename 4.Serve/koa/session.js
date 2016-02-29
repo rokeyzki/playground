@@ -1,16 +1,15 @@
-var app = require('koa')();
-// var session = require('koa-session');
+var app = require('koa')(),
+    session = require('koa-session');
  
 app.keys = ['some secret'];
-// app.use(session(app));
+app.use(session(app));
  
-app.use(function *(){
-    
-  var n = 0;
-  // var n = this.session.views || 0;
-  console.log(n);
-  /*this.session.views = ++n;*/
+app.use(function *(next){
+  var n = this.session.views || 0;
+  this.session.views = ++n;
+  
   this.body = n + ' views';
+  console.log(n);
 });
  
 app.listen(8080);

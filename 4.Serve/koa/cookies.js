@@ -2,7 +2,7 @@ var app = require('koa')(); // koa 自带 cookies 模块
 
 app.keys = ['secret', 'key']; // cookies 中 signed 依赖这行代码，使cookies设置签名
 
-app.use(function *(){
+app.use(function *(next){
   this.body = 'koa cookies';
   
   // 如果存在则增加一次，否则为 cookies 设置 foo 字段，并初始化为 1。
