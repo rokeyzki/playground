@@ -1,8 +1,8 @@
 var app      = require('koa')(), // 框架内核
-    router   = require('koa-router')() // 路由中间件
+    router   = require('koa-router')(), // 路由中间件
     mongoose = require('mongoose');
 
-var db = mongoose.connection;    
+var db = mongoose.connection;
 
 db.on('error',console.error);
 db.once('open',function(){
@@ -16,20 +16,20 @@ db.once('open',function(){
   });
   // Model 模型
   mongoose.model('Book', BookSchema);
-  
+
   // db save
   var Book = mongoose.model('Book');
-  
+
   var book = new Book({
     name: "rokey",
     age: "28",
     time: new Date()
   })
-  
+
   book.save(function(err){
     console.log('save status:', err ? 'failed' : 'success');
   });
-  
+
   // db find
   Book.find({}, function(err, docs){
     if(err){
@@ -39,7 +39,7 @@ db.once('open',function(){
       console.log('result:', docs);
     }
   });
-  
+
   /*Book.findOne({_id:"5672d4a4b969af4410aa33fd"}, function(err, docs){
     if(err){
       console.log('err:', err);
@@ -81,7 +81,7 @@ db.once('open',function(){
       }
     }
   });
-});   
+});
 
 // mongoose.connect('mongodb://username:password@host:port/database?options...');
 // mongoose.connect('mongodb://127.0.0.1:10000/foo');
@@ -94,7 +94,7 @@ router.get('/',
   	this.body = JSON.stringify('hello mongo');
   	yield next;
   },
-  
+
   function *(next) {
     console.log('d2');
     yield next;
