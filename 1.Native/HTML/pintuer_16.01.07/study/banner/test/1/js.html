@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8"> <!-- 字符编码：utf-8 -->
+  <meta name="renderer" content="webkit"> <!-- 针对多核浏览器优先使用 webkit 内核 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 优先使用 IE 最新版本和 Chrome -->
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> <!-- 禁止百度手机自动转码 -->
+  <meta name="google" value="notranslate" /> <!-- 禁止Chrome自动翻译 -->
+  <meta name="format-detection" content="telphone=no, email=no"/> <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+  <title>Document</title> <!-- SEO：定义页面标题 -->
+  <meta name="keywords" content="keywords" /> <!-- SEO：定义页面关键词 -->
+  <meta name="description" content="description" /> <!-- SEO：页面描述内容 -->
+  <meta name="author" content="Charles Lim,hi@oulve.com" /> <!-- SEO：定义页面作者 -->
+  <meta name="robots" content="index,follow"> <!-- SEO：定义页面搜索引擎索引方式 -->
+  <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
+  <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
+  <!--[if lte IE 8]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
+  <!--[if lte IE 8]>
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
+  <!--<![endif]-->
+  <!-- font-awesome.css：图标库，使用示例：<i class="fa fa-camera-retro"></i> -->
+  <link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- holder.js：DEMO图片生成脚本，使用示例：<img src="holder.js/300x200?text=Hello&bg=#67DFEB"> -->
+  <script src="https://cdn.bootcss.com/holder/2.9.0/holder.min.js"></script>
+  <style>
+    html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
+      font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+      font-size: 16px;
+      color: #888;
+      text-shadow: 0px 1px 0px #fff;
+    }
+
+    *{ box-sizing:border-box; }
+    /* *::before,*::after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;} */
+
+    .banner{position:relative;width:100%;overflow:hidden;}
+    .carousel{position:relative;list-style:none;padding:0;}
+    .carousel .item{position:relative; float:left;}
+    .carousel .active{display:block;}
+    .carousel img{display:block;max-width:100%;height:auto;}
+    .banner .pointer{position:absolute;bottom:0;padding:15px;}
+    .banner .pager-prev, .banner .pager-next{position:absolute;display:none;top:50%;margin-top:-25px;}
+    .banner .pager-prev{left:20px;}
+    .banner .pager-next{right:20px;}
+    .banner:hover .pager-prev,.banner:hover .pager-next{display:block;}
+
+    .pager{list-style:none;padding:0;text-align:center;clear:both;}
+    .pager li{display:inline-block;}
+    .pager li a{color:#333;border:solid 1px #ddd;border-radius:15px;padding:5px 15px;transition:all 1s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;}
+    .pager li a:hover{background-color:#f5f5f5;transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;}
+    .pager-prev, .pager .pager-prev, .pager-next, .pager .pager-next{font-size:36px;padding:0;color:#ddd;border:solid 1px #ddd;background-color:rgba(255, 255, 255, .2);width:50px;height:50px;line-height:45px;display:inline-block;border-radius:50%;text-align:center;cursor:pointer;}
+    .pager-prev:hover, .pager-next:hover{background-color:rgba(0, 0, 0, .2);}
+    .pager-group li{float:left;display:inline-block;}
+    .pager-group li:not(:first-child):not(:last-child){border-radius:0;}
+    .pager-group li a:first-child{border-radius:4px 0 0 4px;}
+    .pager-group li a:last-child{border-radius:0 4px 4px 0;}
+    .pointer{padding:0px;}
+    .pointer li{border:solid 1px #ddd;width:10px;height:10px;margin:1px;display:inline-block;border-radius:10px;cursor:pointer;}
+    .pointer .active{border:none;background:#ddd;width:12px;height:12px;margin:0;}
+
+    @keyframes omg {
+      0% {
+        left: 0px;
+      }
+
+      100% {
+        left: -1000px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <div class="banner" data-style="border-red">
+    <div class="carousel">
+      <div class="item">
+        <div style="background-color: #000000;">
+          <div style="margin: 0 auto;max-width: 1000px;">
+            <img src="holder.js/1000x300">
+          </div>
+        </div>
+      </div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播四</div></div>
+    </div>
+  </div>
+
+  <div class="banner" data-style="border-red">
+    <div class="carousel">
+      <div class="item">
+        <div style="background-color: #000000;">
+          <div style="margin: 0 auto;max-width: 1000px;">
+            <img src="holder.js/1000x300">
+          </div>
+        </div>
+      </div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播四</div></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("readystatechange", function(e) {
+      if(document.readyState == "complete") { // console.log('readystatechange complete 页面资源全部加载完成');
+        var bannerAll = document.querySelectorAll(".banner"); // console.log(bannerAll);
+
+        for(var i = 0; i < bannerAll.length; i++) { // console.log(i);
+          var bannerOne = bannerAll[i]; // console.log(bannerOne);
+
+          if(i === 1){
+            bannerOne.remove();
+          }
+
+          var interval    = bannerOne.getAttribute("data-interval"); // console.log(interval);
+          var pointer     = bannerOne.getAttribute("data-pointer");
+          var style       = bannerOne.getAttribute("data-style"); // console.log(style);
+          var items       = bannerOne.getAttribute("data-item");
+          var itemsSmall  = bannerOne.getAttribute("data-small");
+          var itemsMiddle = bannerOne.getAttribute("data-middle");
+          var itemsBig    = bannerOne.getAttribute("data-big");
+
+          var num = bannerOne.querySelectorAll(".carousel .item").length; // console.log(num);
+          var windowWidth = window.innerWidth; // console.log(windowWidth);
+
+          var sign = 1;
+
+          if(interval == null) interval = 5; // console.log(interval);
+          if(items == null || items < 1) items = 1;
+          if(itemsSmall != null && windowWidth > 760) items = itemsSmall;
+          if(itemsMiddle != null && windowWidth > 1000) items = itemsMiddle;
+          if(itemsBig != null && windowWidth > 1200) items = itemsBig;
+          // console.log(items);
+
+          var itemWidth = Math.ceil(bannerOne.clientWidth / items); // console.log(itemWidth);
+          var page = Math.ceil(num / items); // console.log(page);
+
+          var fooItems = bannerOne.querySelectorAll(".carousel .item"); // console.log(fooItems);
+          for(var j = 0; j < fooItems.length; j++){ // console.log(fooItems[j]);
+            fooItems[j].style.setProperty("width", itemWidth + "px");
+          }
+
+          bannerOne.querySelector(".carousel").style.setProperty("width", itemWidth*num + "px");
+
+          var carousel = function(){
+            sign++;
+            if(sign > page) sign = 1;
+            console.log(sign);
+            showBanner(bannerOne, sign, items, num);
+          }
+        }
+      }
+    }, false);
+
+    function showBanner(element, sign, items, num){
+      var after = 0, left = 0;
+      left = - Math.ceil(element.clientWidth / items) * (items) * (sign-1);
+
+      if(sign * items > num){
+        after = sign * items - num;
+        left = - Math.ceil(element.clientWidth / items) * (num-items);
+      }
+      console.log(after); console.log(left);
+
+      // element.querySelector(".carousel").stop(true, true).animate({"left":left+"px"}, 800);
+      element.querySelector(".carousel").style.setProperty("animation", "omg 0.8s");
+
+      var fooLis = bannerOne.querySelectorAll(".pointer li");
+      for(var i = 0; i < fooLis.length; i++){
+        fooLis[i].removeAttribute("class");
+        if(i == (sign-1)){
+          fooLis[i].setAttribute("class", "active");
+        }
+      }
+    }
+  </script>
+</body>
+</html>
