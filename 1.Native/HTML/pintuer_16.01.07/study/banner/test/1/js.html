@@ -68,16 +68,6 @@
     .pointer{padding:0px;}
     .pointer li{border:solid 1px #ddd;width:10px;height:10px;margin:1px;display:inline-block;border-radius:10px;cursor:pointer;}
     .pointer .active{border:none;background:#ddd;width:12px;height:12px;margin:0;}
-
-    @keyframes omg {
-      0% {
-        left: 0px;
-      }
-
-      100% {
-        left: -1000px;
-      }
-    }
   </style>
 
 </head>
@@ -97,7 +87,7 @@
     </div>
   </div>
 
-  <div class="banner" data-style="border-red">
+  <!-- <div class="banner xixixixi" data-style="border-red">
     <div class="carousel">
       <div class="item">
         <div style="background-color: #000000;">
@@ -110,7 +100,7 @@
       <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播四</div></div>
     </div>
-  </div>
+  </div> -->
 
   <script>
     document.addEventListener("readystatechange", function(e) {
@@ -122,62 +112,67 @@
 
           if(i === 1){
             bannerOne.remove();
-          }
+          }else{
+            var interval    = bannerOne.getAttribute("data-interval"); // console.log(interval);
+            var pointer     = bannerOne.getAttribute("data-pointer");
+            var style       = bannerOne.getAttribute("data-style"); // console.log(style);
+            var items       = bannerOne.getAttribute("data-item");
+            var itemsSmall  = bannerOne.getAttribute("data-small");
+            var itemsMiddle = bannerOne.getAttribute("data-middle");
+            var itemsBig    = bannerOne.getAttribute("data-big");
 
-          var interval    = bannerOne.getAttribute("data-interval"); // console.log(interval);
-          var pointer     = bannerOne.getAttribute("data-pointer");
-          var style       = bannerOne.getAttribute("data-style"); // console.log(style);
-          var items       = bannerOne.getAttribute("data-item");
-          var itemsSmall  = bannerOne.getAttribute("data-small");
-          var itemsMiddle = bannerOne.getAttribute("data-middle");
-          var itemsBig    = bannerOne.getAttribute("data-big");
+            var num = bannerOne.querySelectorAll(".carousel .item").length; // console.log(num);
+            var windowWidth = window.innerWidth; // console.log(windowWidth);
 
-          var num = bannerOne.querySelectorAll(".carousel .item").length; // console.log(num);
-          var windowWidth = window.innerWidth; // console.log(windowWidth);
+            var sign = 1;
 
-          var sign = 1;
+            if(interval == null) interval = 5; // console.log(interval);
+            if(items == null || items < 1) items = 1;
+            if(itemsSmall != null && windowWidth > 760) items = itemsSmall;
+            if(itemsMiddle != null && windowWidth > 1000) items = itemsMiddle;
+            if(itemsBig != null && windowWidth > 1200) items = itemsBig;
+            // console.log(items);
 
-          if(interval == null) interval = 5; // console.log(interval);
-          if(items == null || items < 1) items = 1;
-          if(itemsSmall != null && windowWidth > 760) items = itemsSmall;
-          if(itemsMiddle != null && windowWidth > 1000) items = itemsMiddle;
-          if(itemsBig != null && windowWidth > 1200) items = itemsBig;
-          // console.log(items);
+            var itemWidth = Math.ceil(bannerOne.clientWidth / items); // console.log(itemWidth);
+            var page = Math.ceil(num / items); // console.log(page);
 
-          var itemWidth = Math.ceil(bannerOne.clientWidth / items); // console.log(itemWidth);
-          var page = Math.ceil(num / items); // console.log(page);
+            var fooItems = bannerOne.querySelectorAll(".carousel .item"); // console.log(fooItems);
+            for(var j = 0; j < fooItems.length; j++){ // console.log(fooItems[j]);
+              fooItems[j].style.setProperty("width", itemWidth + "px");
+            }
 
-          var fooItems = bannerOne.querySelectorAll(".carousel .item"); // console.log(fooItems);
-          for(var j = 0; j < fooItems.length; j++){ // console.log(fooItems[j]);
-            fooItems[j].style.setProperty("width", itemWidth + "px");
-          }
+            bannerOne.querySelector(".carousel").style.setProperty("width", itemWidth*num + "px");
 
-          bannerOne.querySelector(".carousel").style.setProperty("width", itemWidth*num + "px");
+            var bannerOneWidth = bannerOne.clientWidth;
+            var carousel = function(){
+              sign++;
+              if(sign > page) sign = 1;
 
-          var carousel = function(){
-            sign++;
-            if(sign > page) sign = 1;
-            console.log(sign);
-            showBanner(bannerOne, sign, items, num);
+              showBanner(bannerOne, bannerOneWidth, sign, items, num);
+              // console.log(bannerOne.clientWidth);
+            }
+
+            var play = setInterval(carousel, interval * 600);
           }
         }
       }
     }, false);
 
-    function showBanner(element, sign, items, num){
+    function showBanner(element, width, sign, items, num){
+      // console.log(element);
       var after = 0, left = 0;
-      left = - Math.ceil(element.clientWidth / items) * (items) * (sign-1);
+      left = - Math.ceil(width / items) * (items) * (sign-1);
 
       if(sign * items > num){
         after = sign * items - num;
-        left = - Math.ceil(element.clientWidth / items) * (num-items);
+        left = - Math.ceil(width / items) * (num-items);
       }
-      console.log(after); console.log(left);
+      // console.log(after);
+      // console.log(left);
 
-      // element.querySelector(".carousel").stop(true, true).animate({"left":left+"px"}, 800);
-      element.querySelector(".carousel").style.setProperty("animation", "omg 0.8s");
+      element.querySelector(".carousel").style.setProperty("left", left + "px");
 
-      var fooLis = bannerOne.querySelectorAll(".pointer li");
+      var fooLis = element.querySelectorAll(".pointer li");
       for(var i = 0; i < fooLis.length; i++){
         fooLis[i].removeAttribute("class");
         if(i == (sign-1)){
