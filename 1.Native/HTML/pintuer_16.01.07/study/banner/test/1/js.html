@@ -31,8 +31,6 @@
   <!--<![endif]-->
   <!-- font-awesome.css：图标库，使用示例：<i class="fa fa-camera-retro"></i> -->
   <link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <!-- holder.js：DEMO图片生成脚本，使用示例：<img src="holder.js/300x200?text=Hello&bg=#67DFEB"> -->
-  <script src="https://cdn.bootcss.com/holder/2.9.0/holder.min.js"></script>
   <style>
     html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
       font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
@@ -77,7 +75,8 @@
       <div class="item">
         <div style="background-color: #000000;">
           <div style="margin: 0 auto;max-width: 1000px;">
-            <img src="holder.js/1000x300">
+            <!-- placehold：DEMO图片在线生成链接 -->
+            <img src="http://placehold.it/1000x300/666/fff.jpg?text=演+示+图">
           </div>
         </div>
       </div>
@@ -102,6 +101,7 @@
     </div>
   </div> -->
 
+  <script src="https://cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
   <script>
     document.addEventListener("readystatechange", function(e) {
       if(document.readyState == "complete") { // console.log('readystatechange complete 页面资源全部加载完成');
@@ -122,7 +122,7 @@
             var itemsBig    = bannerOne.getAttribute("data-big");
 
             var num = bannerOne.querySelectorAll(".carousel .item").length; // console.log(num);
-            var windowWidth = window.innerWidth; // console.log(windowWidth);
+            var windowWidth = document.body.offsetWidth; // console.log(windowWidth);
 
             var sign = 1;
 
@@ -180,7 +180,8 @@
       // console.log(after);
       // console.log(left);
 
-      element.querySelector(".carousel").style.setProperty("left", left + "px");
+      // element.querySelector(".carousel").style.setProperty("left", left + "px");
+      Velocity(element.querySelector(".carousel"), { left: left }, { duration: 800, easing: "easeInSine" });
 
       var fooLis = element.querySelectorAll(".pointer li");
       for(var i = 0; i < fooLis.length; i++){
