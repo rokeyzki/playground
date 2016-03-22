@@ -85,16 +85,16 @@
 
     /*
      * 异常处理
-    */
+     */
     function throwIfMissing() {
       throw new Error('参数缺失')
     }
 
-    function fooD1(mustBeProvided = throwIfMissing()) {
+    function fooE1(mustBeProvided = throwIfMissing()) {
       return mustBeProvided
     }
 
-    fooD1()
+    fooE1()
 
 
   </script>
