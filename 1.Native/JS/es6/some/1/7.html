@@ -20,25 +20,83 @@
     `use strict`
 
     /*
-     * 函数声明
+     * 函数声明 - 缺省参数
      */
-    function fooA(x, y = 10){
+    function fooA1(x, y = 10) {
       return x + y
     }
 
-    console.log(fooA(5)) // 15
+    console.log(`fooA1: ` + fooA1(5)) // 15
 
     /*
-     * 箭头函数
+     * 函数声明 - 无序参数
      */
-    var fooB = () => 5
-    console.log(fooB()) // 5
+    function fooA2({x = 0, y = 10} = {}) {
+      return x + y
+    }
 
-    var fooC = (x) => x + 10
-    console.log(fooC(5)) // 15
+    console.log(`fooA2: ` + fooA2({y: 15, x: 5})) // 20
 
-    var fooD = (x, y = 10) => x + y
-    console.log(fooD(5)) // 15
+    /*
+     * 函数声明 - 无限参数
+     */
+    function fooA3(...values) {
+      let sum = 0
+      for(var val of values) {
+        sum += val
+      }
+      return sum
+    }
+
+    console.log(`fooA3: ` + fooA3(10, 20, 30)) // 60
+
+    /*
+     * 变量函数表达式VFE
+     */
+    var fooB1 = function(x, y = 10) {
+      return x + y
+    }
+
+    console.log(`fooB1: ` + fooB1(5)) // 15
+
+    /*
+     * 变量函数表达式VFE - 箭头函数
+     */
+    var fooB2 = () => 5
+    console.log(`fooB2: ` + fooB2()) // 5
+
+    var fooB3 = (x) => x + 10
+    console.log(`fooB3: ` + fooB3(5)) // 15
+
+    var fooB4 = (x, y = 10) => x + y
+    console.log(`fooB4: ` + fooB4(5)) // 15
+
+    /*
+     * 即调函数表达式IIFE
+
+    (function() {
+      var x = 5, y = 10
+      console.log(x + y)
+    }());
+
+    (() => {
+      console.log('Welcome to the Internet.')
+    })();*/
+
+    /*
+     * 异常处理
+    */
+    function throwIfMissing() {
+      throw new Error('参数缺失')
+    }
+
+    function fooD1(mustBeProvided = throwIfMissing()) {
+      return mustBeProvided
+    }
+
+    fooD1()
+
+
   </script>
   <!-- browser.js：使浏览器支持将es6或jsx编译为es5，环境限制：无，标签限制：<script type="text/babel"></script> -->
   <script src="https://cdn.bootcss.com/babel-core/5.8.34/browser.min.js"></script>
