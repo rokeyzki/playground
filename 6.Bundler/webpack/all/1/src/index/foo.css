@@ -7,7 +7,7 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pu
 }
 
 #anima {
-  width: 100px;
+  width: 200px;
   height: 100px;
   background-color: #FF3F2A;
   position: relative;
