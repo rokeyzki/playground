@@ -43,7 +43,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('[name].min.css'),
-    new BannerPlugin('This file is created by Charles Lim'),
+    new BannerPlugin('This file is created by Charles Lim \n警告：该脚本文件为欧略工坊所有，任何盗用与修改的行为，我们将保留追究法律责任的权利。'),
     new CommonsChunkPlugin('common.min.js'),
     new UglifyJsPlugin({compress:{warnings: false}})
   ],
