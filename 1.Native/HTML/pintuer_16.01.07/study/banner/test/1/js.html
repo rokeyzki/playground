@@ -70,7 +70,7 @@
 
 </head>
 <body>
-  <div class="banner" data-style="border-red">
+  <div class="banner" data-pointer="1" data-style="border-red">
     <div class="carousel">
       <div class="item">
         <div style="background-color: #000000;">
@@ -163,6 +163,30 @@
               play = setInterval(carousel, interval * 600);
               // console.log('mouseout');
             }, false);
+
+            if(pointer != null && page > 1){
+              var pointHtml = '<ul class="pointer"><li value="1" class="active"></li>';
+              for(var k = 1; k < page; k++){
+                pointHtml += ' <li value="'+(k+1)+'"></li>';
+              }
+              pointHtml += '</ul>';
+
+              bannerOne.insertAdjacentHTML('beforeend', pointHtml);
+              var pointNode = bannerOne.querySelector('ul.pointer');
+              if(style != null){
+                pointNode.classList.add(style);
+              }
+
+              pointNode.style.setProperty("left", "50%");
+              pointNode.style.setProperty("margin-left", -(pointNode.offsetWidth*0.5)+'px');
+
+              var pointLis = pointNode.querySelectorAll('li');
+              for(var l = 0; l < pointLis.length; l++){
+                pointLis[l].addEventListener('click', function(e) {
+                  showBanner(bannerOne, bannerOneWidth, this.value, items, num);
+                }, false);
+              }
+            }
           }
         }
       }
