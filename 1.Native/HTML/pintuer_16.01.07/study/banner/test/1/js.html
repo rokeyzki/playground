@@ -153,7 +153,7 @@
             var carousel = function(){
               this.custom.sign++;
               if(this.custom.sign > this.custom.page) this.custom.sign = 1;
-              console.log(this.custom.sign+'/'+this.custom.page);
+              // console.log(this.custom.sign+'/'+this.custom.page);
               showBanner(this, bannerOneWidth, this.custom.sign, items, num);
               // console.log(bannerOne.clientWidth);
             }
@@ -188,17 +188,13 @@
 
               var pointLis = pointNode.querySelectorAll('li');
               var pointFun = function(value){
-                console.log(this);
+                // console.log(this);
                 this.custom.sign = value;
                 showBanner(this, bannerOneWidth, value, items, num);
               }
-              // 问题所在
+
               for(var l = 0; l < pointLis.length; l++){
-
-                pointLis[l].addEventListener('click', function(e) {
-                  pointFun.call(bannerOne, this.value);
-                }, false);
-
+                pointLis[l].addEventListener('click', pointFun.bind(bannerOne, (l+1)), false);
               }
 
               var lefterHtml = '<div class="pager-prev"><i class="fa fa-angle-left"></i></div>';
@@ -214,17 +210,21 @@
                 righterNode.classList.add(style);
               }
 
-              lefterNode.addEventListener('click', function(e) {
-                bannerOne.custom.sign--;
-                if(bannerOne.custom.sign < 1) bannerOne.custom.sign = bannerOne.custom.page;
-                showBanner(bannerOne, bannerOneWidth, bannerOne.custom.sign, items, num);
-              }, false);
+              var lefterFun = function(){
+                this.custom.sign--;
+                if(this.custom.sign < 1) this.custom.sign = this.custom.page;
+                showBanner(this, bannerOneWidth, this.custom.sign, items, num);
+              }
 
-              righterNode.addEventListener('click', function(e) {
-                bannerOne.custom.sign++;
-                if(bannerOne.custom.sign > bannerOne.custom.page) bannerOne.custom.sign = 1;
-                showBanner(bannerOne, bannerOneWidth, bannerOne.custom.sign, items, num);
-              }, false);
+              lefterNode.addEventListener('click', lefterFun.bind(bannerOne), false);
+
+              var righterFun = function(){
+                this.custom.sign++;
+                if(this.custom.sign > this.custom.page) this.custom.sign = 1;
+                showBanner(this, bannerOneWidth, this.custom.sign, items, num);
+              }
+
+              righterNode.addEventListener('click', righterFun.bind(bannerOne), false);
             }
           }
         }
