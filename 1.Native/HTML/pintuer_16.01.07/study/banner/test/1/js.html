@@ -70,7 +70,7 @@
 
 </head>
 <body>
-  <div class="banner" data-pointer="0" data-style="border-red" data-interval="10" data-big="2">
+  <div class="banner" data-pointer="1" data-style="border-red" data-interval="10" data-big="2">
     <div class="carousel">
       <div class="item">
         <div style="height: 300px; background: #666;">轮播一</div>
@@ -86,7 +86,7 @@
     </div>
   </div>
 
-  <div class="banner xixixixi">
+  <div class="banner xixixixi" data-pointer="1">
     <div class="carousel">
       <div class="item"><div style="height: 300px; background: #666;">轮播一</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
@@ -102,15 +102,15 @@
         var bannerAll = document.querySelectorAll(".banner"); // console.log(bannerAll);
 
         /*for(g in bannerAll){
-          console.log(g);
+          if(bannerAll.hasOwnProperty(g)){
+            console.log(bannerAll[g]);
+            var test1 = function(){
+              console.log(this);
+            }
 
-          var test1 = function(){
-            console.log(123);
+            test2 = setInterval(test1.bind(bannerAll[g]), 5000);
           }
-
-          test2 = setInterval(test1, 5000);
         };*/
-
 
         for(var i = 0; i < bannerAll.length; i++) { // console.log(i);
           var bannerOne = bannerAll[i]; // console.log(bannerOne);
@@ -129,7 +129,8 @@
             var num = bannerOne.querySelectorAll(".carousel .item").length; // console.log(num);
             var windowWidth = document.body.offsetWidth; // console.log(windowWidth);
 
-            var sign = 1;
+            bannerOne.custom = {};
+            bannerOne.custom.sign = 1;
 
             if(interval == null) interval = 5; // console.log(interval);
             if(items == null || items < 1) items = 1;
@@ -139,7 +140,7 @@
             // console.log(items);
 
             var itemWidth = Math.ceil(bannerOne.clientWidth / items); // console.log(itemWidth);
-            var page = Math.ceil(num / items); // console.log(page);
+            bannerOne.custom.page = Math.ceil(num / items); // console.log(page);
 
             var fooItems = bannerOne.querySelectorAll(".carousel .item"); // console.log(fooItems);
             for(var j = 0; j < fooItems.length; j++){ // console.log(fooItems[j]);
@@ -150,14 +151,14 @@
 
             var bannerOneWidth = bannerOne.clientWidth;
             var carousel = function(){
-              sign++;
-              if(sign > page) sign = 1;
-
-              showBanner(bannerOne, bannerOneWidth, sign, items, num);
+              this.custom.sign++;
+              if(this.custom.sign > this.custom.page) this.custom.sign = 1;
+              console.log(this.custom.sign+'/'+this.custom.page);
+              showBanner(this, bannerOneWidth, this.custom.sign, items, num);
               // console.log(bannerOne.clientWidth);
             }
 
-            var play = setInterval(carousel, interval * 1000);
+            var play = setInterval(carousel.bind(bannerOne), interval * 1000);
 
             bannerOne.addEventListener('mouseover', function(e) {
               clearInterval(play);
@@ -165,13 +166,13 @@
             }, false);
 
             bannerOne.addEventListener('mouseout', function(e) {
-              play = setInterval(carousel, interval * 1000);
+              play = setInterval(carousel.bind(bannerOne), interval * 1000);
               // console.log('mouseout');
             }, false);
 
-            if(pointer != null && page > 1){
+            if(pointer != null && bannerOne.custom.page > 1){
               var pointHtml = '<ul class="pointer"><li value="1" class="active"></li>';
-              for(var k = 1; k < page; k++){
+              for(var k = 1; k < bannerOne.custom.page; k++){
                 pointHtml += ' <li value="'+(k+1)+'"></li>';
               }
               pointHtml += '</ul>';
@@ -186,11 +187,18 @@
               pointNode.style.setProperty("margin-left", -(pointNode.offsetWidth*0.5)+'px');
 
               var pointLis = pointNode.querySelectorAll('li');
+              var pointFun = function(value){
+                console.log(this);
+                this.custom.sign = value;
+                showBanner(this, bannerOneWidth, value, items, num);
+              }
+              // 问题所在
               for(var l = 0; l < pointLis.length; l++){
+
                 pointLis[l].addEventListener('click', function(e) {
-                  sign = this.value;
-                  showBanner(bannerOne, bannerOneWidth, this.value, items, num);
+                  pointFun.call(bannerOne, this.value);
                 }, false);
+
               }
 
               var lefterHtml = '<div class="pager-prev"><i class="fa fa-angle-left"></i></div>';
@@ -207,15 +215,15 @@
               }
 
               lefterNode.addEventListener('click', function(e) {
-                sign--;
-                if(sign < 1) sign = page;
-                showBanner(bannerOne, bannerOneWidth, sign, items, num);
+                bannerOne.custom.sign--;
+                if(bannerOne.custom.sign < 1) bannerOne.custom.sign = bannerOne.custom.page;
+                showBanner(bannerOne, bannerOneWidth, bannerOne.custom.sign, items, num);
               }, false);
 
               righterNode.addEventListener('click', function(e) {
-                sign++;
-                if(sign > page) sign = 1;
-                showBanner(bannerOne, bannerOneWidth, sign, items, num);
+                bannerOne.custom.sign++;
+                if(bannerOne.custom.sign > bannerOne.custom.page) bannerOne.custom.sign = 1;
+                showBanner(bannerOne, bannerOneWidth, bannerOne.custom.sign, items, num);
               }, false);
             }
           }
