@@ -70,15 +70,15 @@
 
 </head>
 <body>
-  <div class="banner" data-pointer="1" data-style="border-red">
+  <div class="banner" data-pointer="0" data-style="border-red" data-interval="10" data-big="2">
     <div class="carousel">
       <div class="item">
-        <div style="background-color: #000000;">
+        <div style="height: 300px; background: #666;">轮播一</div>
+        <!-- <div style="background-color: #000000;">
           <div style="margin: 0 auto;max-width: 1000px;">
-            <!-- placehold：DEMO图片在线生成链接 -->
             <img src="http://placehold.it/1000x300/666/fff.jpg?text=演+示+图">
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
@@ -86,20 +86,14 @@
     </div>
   </div>
 
-  <!-- <div class="banner xixixixi" data-style="border-red">
+  <div class="banner xixixixi">
     <div class="carousel">
-      <div class="item">
-        <div style="background-color: #000000;">
-          <div style="margin: 0 auto;max-width: 1000px;">
-            <img src="holder.js/1000x300">
-          </div>
-        </div>
-      </div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播一</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播四</div></div>
     </div>
-  </div> -->
+  </div>
 
   <script src="https://cdn.bootcss.com/velocity/1.2.3/velocity.min.js"></script>
   <script>
@@ -107,10 +101,21 @@
       if(document.readyState == "complete") { // console.log('readystatechange complete 页面资源全部加载完成');
         var bannerAll = document.querySelectorAll(".banner"); // console.log(bannerAll);
 
+        /*for(g in bannerAll){
+          console.log(g);
+
+          var test1 = function(){
+            console.log(123);
+          }
+
+          test2 = setInterval(test1, 5000);
+        };*/
+
+
         for(var i = 0; i < bannerAll.length; i++) { // console.log(i);
           var bannerOne = bannerAll[i]; // console.log(bannerOne);
 
-          if(i === 1){
+          if(i === 2){
             bannerOne.remove();
           }else{
             var interval    = bannerOne.getAttribute("data-interval"); // console.log(interval);
@@ -152,7 +157,7 @@
               // console.log(bannerOne.clientWidth);
             }
 
-            var play = setInterval(carousel, interval * 600);
+            var play = setInterval(carousel, interval * 1000);
 
             bannerOne.addEventListener('mouseover', function(e) {
               clearInterval(play);
@@ -160,7 +165,7 @@
             }, false);
 
             bannerOne.addEventListener('mouseout', function(e) {
-              play = setInterval(carousel, interval * 600);
+              play = setInterval(carousel, interval * 1000);
               // console.log('mouseout');
             }, false);
 
@@ -183,6 +188,7 @@
               var pointLis = pointNode.querySelectorAll('li');
               for(var l = 0; l < pointLis.length; l++){
                 pointLis[l].addEventListener('click', function(e) {
+                  sign = this.value;
                   showBanner(bannerOne, bannerOneWidth, this.value, items, num);
                 }, false);
               }
