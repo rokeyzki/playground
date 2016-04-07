@@ -186,6 +186,31 @@
                   showBanner(bannerOne, bannerOneWidth, this.value, items, num);
                 }, false);
               }
+
+              var lefterHtml = '<div class="pager-prev"><i class="fa fa-angle-left"></i></div>';
+              bannerOne.insertAdjacentHTML('beforeend', lefterHtml);
+              var lefterNode = bannerOne.querySelector('div.pager-prev');
+
+              var righterHtml = '<div class="pager-next"><i class="fa fa-angle-right"></i></div>';
+              bannerOne.insertAdjacentHTML('beforeend', righterHtml);
+              var righterNode = bannerOne.querySelector('div.pager-next');
+
+              if(style != null){
+                lefterNode.classList.add(style);
+                righterNode.classList.add(style);
+              }
+
+              lefterNode.addEventListener('click', function(e) {
+                sign--;
+                if(sign < 1) sign = page;
+                showBanner(bannerOne, bannerOneWidth, sign, items, num);
+              }, false);
+
+              righterNode.addEventListener('click', function(e) {
+                sign++;
+                if(sign > page) sign = 1;
+                showBanner(bannerOne, bannerOneWidth, sign, items, num);
+              }, false);
             }
           }
         }
