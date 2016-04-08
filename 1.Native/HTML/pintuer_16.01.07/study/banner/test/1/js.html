@@ -70,16 +70,9 @@
 
 </head>
 <body>
-  <div class="banner" data-pointer="1" data-style="border-red" data-interval="10" data-big="2">
+  <div class="banner" data-pointer="1" data-style="border-red" data-interval="2" data-big="2">
     <div class="carousel">
-      <div class="item">
-        <div style="height: 300px; background: #666;">轮播一</div>
-        <!-- <div style="background-color: #000000;">
-          <div style="margin: 0 auto;max-width: 1000px;">
-            <img src="http://placehold.it/1000x300/666/fff.jpg?text=演+示+图">
-          </div>
-        </div> -->
-      </div>
+      <div class="item"><div style="height: 300px; background: #666;">轮播一</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播四</div></div>
@@ -88,7 +81,13 @@
 
   <div class="banner xixixixi" data-pointer="1">
     <div class="carousel">
-      <div class="item"><div style="height: 300px; background: #666;">轮播一</div></div>
+      <div class="item">
+        <div style="background-color: #000000;">
+          <div style="margin: 0 auto;max-width: 1000px;">
+            <img src="http://placehold.it/1000x300/666/fff.jpg?text=演+示+图">
+          </div>
+        </div>
+      </div>
       <div class="item"><div style="height: 300px; background: #666;">轮播二</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播三</div></div>
       <div class="item"><div style="height: 300px; background: #666;">轮播四</div></div>
@@ -101,135 +100,128 @@
       if(document.readyState == "complete") { // console.log('readystatechange complete 页面资源全部加载完成');
         var bannerAll = document.querySelectorAll(".banner"); // console.log(bannerAll);
 
-        /*for(g in bannerAll){
-          if(bannerAll.hasOwnProperty(g)){
-            console.log(bannerAll[g]);
-            var test1 = function(){
-              console.log(this);
-            }
-
-            test2 = setInterval(test1.bind(bannerAll[g]), 5000);
+        for(i in bannerAll){
+          if(bannerAll.hasOwnProperty(i)){
+            createBanner.call(bannerAll[i])
           }
-        };*/
+        };
 
-        for(var i = 0; i < bannerAll.length; i++) { // console.log(i);
-          var bannerOne = bannerAll[i]; // console.log(bannerOne);
-
-          if(i === 2){
-            bannerOne.remove();
-          }else{
-            var interval    = bannerOne.getAttribute("data-interval"); // console.log(interval);
-            var pointer     = bannerOne.getAttribute("data-pointer");
-            var style       = bannerOne.getAttribute("data-style"); // console.log(style);
-            var items       = bannerOne.getAttribute("data-item");
-            var itemsSmall  = bannerOne.getAttribute("data-small");
-            var itemsMiddle = bannerOne.getAttribute("data-middle");
-            var itemsBig    = bannerOne.getAttribute("data-big");
-
-            var num = bannerOne.querySelectorAll(".carousel .item").length; // console.log(num);
-            var windowWidth = document.body.offsetWidth; // console.log(windowWidth);
-
-            bannerOne.custom = {};
-            bannerOne.custom.sign = 1;
-
-            if(interval == null) interval = 5; // console.log(interval);
-            if(items == null || items < 1) items = 1;
-            if(itemsSmall != null && windowWidth > 760) items = itemsSmall;
-            if(itemsMiddle != null && windowWidth > 1000) items = itemsMiddle;
-            if(itemsBig != null && windowWidth > 1200) items = itemsBig;
-            // console.log(items);
-
-            var itemWidth = Math.ceil(bannerOne.clientWidth / items); // console.log(itemWidth);
-            bannerOne.custom.page = Math.ceil(num / items); // console.log(page);
-
-            var fooItems = bannerOne.querySelectorAll(".carousel .item"); // console.log(fooItems);
-            for(var j = 0; j < fooItems.length; j++){ // console.log(fooItems[j]);
-              fooItems[j].style.setProperty("width", itemWidth + "px");
-            }
-
-            bannerOne.querySelector(".carousel").style.setProperty("width", itemWidth*num + "px");
-
-            var bannerOneWidth = bannerOne.clientWidth;
-            var carousel = function(){
-              this.custom.sign++;
-              if(this.custom.sign > this.custom.page) this.custom.sign = 1;
-              // console.log(this.custom.sign+'/'+this.custom.page);
-              showBanner(this, bannerOneWidth, this.custom.sign, items, num);
-              // console.log(bannerOne.clientWidth);
-            }
-
-            var play = setInterval(carousel.bind(bannerOne), interval * 1000);
-
-            bannerOne.addEventListener('mouseover', function(e) {
-              clearInterval(play);
-              // console.log('mouseover');
-            }, false);
-
-            bannerOne.addEventListener('mouseout', function(e) {
-              play = setInterval(carousel.bind(bannerOne), interval * 1000);
-              // console.log('mouseout');
-            }, false);
-
-            if(pointer != null && bannerOne.custom.page > 1){
-              var pointHtml = '<ul class="pointer"><li value="1" class="active"></li>';
-              for(var k = 1; k < bannerOne.custom.page; k++){
-                pointHtml += ' <li value="'+(k+1)+'"></li>';
-              }
-              pointHtml += '</ul>';
-
-              bannerOne.insertAdjacentHTML('beforeend', pointHtml);
-              var pointNode = bannerOne.querySelector('ul.pointer');
-              if(style != null){
-                pointNode.classList.add(style);
-              }
-
-              pointNode.style.setProperty("left", "50%");
-              pointNode.style.setProperty("margin-left", -(pointNode.offsetWidth*0.5)+'px');
-
-              var pointLis = pointNode.querySelectorAll('li');
-              var pointFun = function(value){
-                // console.log(this);
-                this.custom.sign = value;
-                showBanner(this, bannerOneWidth, value, items, num);
-              }
-
-              for(var l = 0; l < pointLis.length; l++){
-                pointLis[l].addEventListener('click', pointFun.bind(bannerOne, (l+1)), false);
-              }
-
-              var lefterHtml = '<div class="pager-prev"><i class="fa fa-angle-left"></i></div>';
-              bannerOne.insertAdjacentHTML('beforeend', lefterHtml);
-              var lefterNode = bannerOne.querySelector('div.pager-prev');
-
-              var righterHtml = '<div class="pager-next"><i class="fa fa-angle-right"></i></div>';
-              bannerOne.insertAdjacentHTML('beforeend', righterHtml);
-              var righterNode = bannerOne.querySelector('div.pager-next');
-
-              if(style != null){
-                lefterNode.classList.add(style);
-                righterNode.classList.add(style);
-              }
-
-              var lefterFun = function(){
-                this.custom.sign--;
-                if(this.custom.sign < 1) this.custom.sign = this.custom.page;
-                showBanner(this, bannerOneWidth, this.custom.sign, items, num);
-              }
-
-              lefterNode.addEventListener('click', lefterFun.bind(bannerOne), false);
-
-              var righterFun = function(){
-                this.custom.sign++;
-                if(this.custom.sign > this.custom.page) this.custom.sign = 1;
-                showBanner(this, bannerOneWidth, this.custom.sign, items, num);
-              }
-
-              righterNode.addEventListener('click', righterFun.bind(bannerOne), false);
-            }
-          }
-        }
       }
     }, false);
+
+    function createBanner(){
+      /*var test1 = function(){
+        console.log(this);
+      }
+
+      test2 = setInterval(test1.bind(this), 5000);*/
+
+      var banner = this;
+
+      var interval    = banner.getAttribute("data-interval"); // console.log(interval);
+      var pointer     = banner.getAttribute("data-pointer");
+      var style       = banner.getAttribute("data-style"); // console.log(style);
+      var items       = banner.getAttribute("data-item");
+      var itemsSmall  = banner.getAttribute("data-small");
+      var itemsMiddle = banner.getAttribute("data-middle");
+      var itemsBig    = banner.getAttribute("data-big");
+
+      var num = banner.querySelectorAll(".carousel .item").length; // console.log(num);
+      var windowWidth = document.body.offsetWidth;
+
+      var sign = 1;
+
+      if(interval == null) interval = 5; // console.log(interval);
+      if(items == null || items < 1) items = 1;
+      if(itemsSmall != null && windowWidth > 760) items = itemsSmall;
+      if(itemsMiddle != null && windowWidth > 1000) items = itemsMiddle;
+      if(itemsBig != null && windowWidth > 1200) items = itemsBig;
+      // console.log(items);
+
+      var itemWidth = Math.ceil(banner.clientWidth / items); // console.log(itemWidth);
+      var page = Math.ceil(num / items); // console.log(page);
+
+      var fooItems = banner.querySelectorAll(".carousel .item"); // console.log(fooItems);
+      for(var j = 0; j < fooItems.length; j++){ // console.log(fooItems[j]);
+        fooItems[j].style.setProperty("width", itemWidth + "px");
+      }
+
+      banner.querySelector(".carousel").style.setProperty("width", itemWidth*num + "px");
+
+      var bannerWidth = banner.clientWidth;
+      var carousel = function(){
+        sign++;
+        if(sign > page) sign = 1;
+        // console.log(sign+'/'+page);
+        // console.log(banner);
+        showBanner(banner, bannerWidth, sign, items, num);
+        // console.log(banner.clientWidth);
+      }
+
+      var play = setInterval(carousel, interval * 1000);
+
+      banner.addEventListener('mouseover', function(e) {
+        clearInterval(play);
+        // console.log('mouseover');
+      }, false);
+
+      banner.addEventListener('mouseout', function(e) {
+        play = setInterval(carousel, interval * 1000);
+        // console.log('mouseout');
+      }, false);
+
+      if(pointer != null && page > 1){
+        var pointHtml = '<ul class="pointer"><li value="1" class="active"></li>';
+        for(var k = 1; k < page; k++){
+          pointHtml += ' <li value="'+(k+1)+'"></li>';
+        }
+        pointHtml += '</ul>';
+
+        banner.insertAdjacentHTML('beforeend', pointHtml);
+
+        var pointNode = banner.querySelector('ul.pointer');
+        if(style != null){
+          pointNode.classList.add(style);
+        }
+
+        pointNode.style.setProperty("left", "50%");
+        pointNode.style.setProperty("margin-left", -(pointNode.offsetWidth*0.5)+'px');
+
+        var pointLis = pointNode.querySelectorAll('li');
+        for(var l = 0; l < pointLis.length; l++){
+          pointLis[l].addEventListener('click', function(e){
+            sign = this.value;
+            showBanner(banner, bannerWidth, this.value, items, num);
+          }, false);
+        }
+
+        var lefterHtml = '<div class="pager-prev"><i class="fa fa-angle-left"></i></div>';
+        banner.insertAdjacentHTML('beforeend', lefterHtml);
+        var lefterNode = banner.querySelector('div.pager-prev');
+
+        var righterHtml = '<div class="pager-next"><i class="fa fa-angle-right"></i></div>';
+        banner.insertAdjacentHTML('beforeend', righterHtml);
+        var righterNode = banner.querySelector('div.pager-next');
+
+        if(style != null){
+          lefterNode.classList.add(style);
+          righterNode.classList.add(style);
+        }
+
+        lefterNode.addEventListener('click', function(e){
+          sign--;
+          if(sign < 1) sign = page;
+          showBanner(banner, bannerWidth, sign, items, num);
+        }, false);
+
+        righterNode.addEventListener('click', function(e){
+          sign++;
+          if(sign > page) sign = 1;
+          showBanner(banner, bannerWidth, sign, items, num);
+        }, false);
+
+      }
+    }
 
     function showBanner(element, width, sign, items, num){
       // console.log(element);
