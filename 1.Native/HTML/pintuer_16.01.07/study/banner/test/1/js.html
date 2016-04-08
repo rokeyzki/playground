@@ -16,21 +16,12 @@
   <link rel="bookmark" href="http://oulve.com/favicon.ico" />
   <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
   <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
-  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
-  <!--[if lte IE 8]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <![endif]-->
-  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
-  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
-  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
-  <!--[if lte IE 8]>
-    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
-  <!--<![endif]-->
   <!-- font-awesome.css：图标库，使用示例：<i class="fa fa-camera-retro"></i> -->
   <link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下需要respond.js协助 -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
   <style>
     html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
       font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
@@ -101,8 +92,8 @@
         var bannerAll = document.querySelectorAll(".banner"); // console.log(bannerAll);
 
         for(i in bannerAll){
-          if(bannerAll.hasOwnProperty(i)){
-            createBanner.call(bannerAll[i])
+          if(bannerAll.hasOwnProperty(i)){ // 遍历对象的推荐方式
+            createBanner.call(bannerAll[i]); // 为避免定时程序、事件程序中的对象被覆盖，对象需要绑定到业务函数中
           }
         };
 
@@ -116,7 +107,7 @@
 
       test2 = setInterval(test1.bind(this), 5000);*/
 
-      var banner = this;
+      var banner = this; // 业务函数的第一件事：将this对象赋值到一个新的变量中
 
       var interval    = banner.getAttribute("data-interval"); // console.log(interval);
       var pointer     = banner.getAttribute("data-pointer");
