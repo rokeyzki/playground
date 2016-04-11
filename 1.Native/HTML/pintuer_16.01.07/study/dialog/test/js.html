@@ -142,6 +142,7 @@
 
       if(mask == '1'){
         maskLayout.addEventListener('click', function(e){
+          // all IE 不支持 remove()，支持 .removeNode(true)
           win.remove();
           this.remove();
         }, false);

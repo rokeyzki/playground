@@ -145,6 +145,7 @@
 
     function handlePanelHead(){
       var panelHead = this;
+      // all IE 不支持 closest
       var collapse = panelHead.closest('.collapse');
       var panel = panelHead.closest('.panel');
 
