@@ -34,7 +34,7 @@
   </style>
 </head>
 <body>
-  <div class="spy-content" style="height: 300px; margin:100px 0px; overflow: auto;">
+  <div class="spy-content" style="height: 200px; margin:100px 0px; overflow: auto;">
       <h4 id="spy1">监听A</h4>
       <section class="section-center">
         <div id="title">
@@ -104,9 +104,9 @@
 
     var handleSpya = function(){
       var spya = this;
-      var spa = spya.closest('.spy');
-      var target = spa.getAttribute('data-target');
-      var top = spa.getAttribute('data-offset-spy');
+      var spy = spya.closest('.spy');
+      var target = spy.getAttribute('data-target');
+      var top = spy.getAttribute('data-offset-spy');
       var thisTarget = '';
       var thisTop = '';
 
@@ -126,11 +126,10 @@
         }
 
         if(thisTop < 0){
-          var lis = spa.querySelectorAll('li');
-          for(j in lis){
-            if(lis.hasOwnProperty(j)){
-              lis[j].classList.remove('active');
-            }
+          var lis = spy.querySelectorAll('li');
+
+          for (var j = lis.length - 1; j >= 0; j--) {
+            lis[j].classList.remove('active');
           }
 
           spya.closest('li').classList.add('active');
