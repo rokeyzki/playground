@@ -23,6 +23,10 @@
     console.log($(window).height());
     // 获取页面可视区域高度 类似：jquery(window).height();
     console.log(document.documentElement.clientHeight);
+    // 获取页面可视区域距离文档顶部的距离 类似: $(window).scrollTop();
+    console.log(document.body.scrollTop);
+    // 获取某节点距离文档顶部的距离
+    console.log(Element.prototype.getBoundingClientRect().top);
   </script>
 </body>
 </html>

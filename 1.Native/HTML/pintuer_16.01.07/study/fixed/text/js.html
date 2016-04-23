@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-siteapp" /> <!-- 禁止百度手机自动转码 -->
   <meta name="google" value="notranslate" /> <!-- 禁止Chrome自动翻译 -->
   <meta name="format-detection" content="telphone=no, email=no"/> <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-  <title>fixed</title> <!-- SEO：定义页面标题 -->
+  <title>Document</title> <!-- SEO：定义页面标题 -->
   <meta name="keywords" content="keywords" /> <!-- SEO：定义页面关键词 -->
   <meta name="description" content="description" /> <!-- SEO：页面描述内容 -->
   <meta name="author" content="Charles Lim,hi@oulve.com" /> <!-- SEO：定义页面作者 -->
@@ -16,26 +16,16 @@
   <link rel="bookmark" href="http://oulve.com/favicon.ico" />
   <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
   <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
-  <!-- html5shiv.js：使 IE-678 兼容 HTML5 标签 -->
-  <!--[if lte IE 8]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <![endif]-->
   <!-- pure-grids：css 栅栏布局，依赖 normalize.css -->
   <link href="https://cdn.bootcss.com/pure/0.6.0/grids-min.css" rel="stylesheet">
-  <!-- responsive：css 栅栏布局添加响应式，IE-678 下降级处理 -->
-  <!--[if lte IE 8]>
-    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-old-ie-min.css" rel="stylesheet">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-    <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
-  <!--<![endif]-->
+  <!-- responsive：css 栅栏布局添加响应式，IE-678 下需要respond.js协助 -->
+  <link href="https://cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css" rel="stylesheet">
   <style>
     html, button, input, select, textarea, .pure-g [class *= "pure-u"] { /* 修改Pure默认字体栈及字体样式 */
       font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
       font-size: 16px;
       color: #888;
       text-shadow: 0px 1px 0px #fff;
-      text-rendering: auto;
     }
 
     /*固定*/
@@ -86,7 +76,6 @@
   </style>
 </head>
 <body>
-
   <div style="height: 200px; background-color: blue"></div>
 
   <div class="fixed" style="height: 100px; background-color: red">别离开我，我要回去。</div>
@@ -97,41 +86,58 @@
 
   <div style="height: 200px; background-color: blue"></div>
 
-  <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
-  <script type="text/javascript">
-  $(function(){
-    $(".fixed").each(function() {
-      var e = $(this);
-      var style = e.attr("data-style");
-      var top = e.attr("data-offset-fixed");
-      if (top == null) {
-        top = e.offset().top;
-      } else {
-        top = e.offset().top - parseInt(top);
-      };
+  <script>
+    document.addEventListener("readystatechange", function(e) {
+      if(document.readyState == "complete") { // console.log('readystatechange complete 页面资源全部加载完成');
+        var fixedAll = document.querySelectorAll(".fixed"); // console.log(bannerAll);
 
-      if (style == null) {
+        for(i in fixedAll){
+          if(fixedAll.hasOwnProperty(i)){ // 遍历对象的推荐方式
+            handleFixed.call(fixedAll[i]); // 为避免定时程序、事件程序中的对象被覆盖，对象需要绑定到业务函数中
+          }
+        };
+
+      }
+    }, false);
+
+    var handleFixed = function(){
+      var fixed = this;
+
+      var style = fixed.getAttribute('data-style');
+      var top = fixed.getAttribute('data-offset-fixed');
+      if(top == null) {
+        top = fixed.offsetTop;
+      }else{
+        top = fixed.offsetTop - parseInt(top);
+      }
+
+      if(style == null) {
         style = "fixed-top";
-      };
+      }
 
-      $(window).bind("scroll", function() {
-        var thistop = top - $(window).scrollTop();
-        if (style == "fixed-top" && thistop < 0) {
-          e.addClass("fixed-top");
+      showFixed.call(fixed, style, top);
+    }
+
+    var showFixed = function(style, top){
+      var fixed = this;
+
+      window.addEventListener('scroll', function(e) {
+        var thisTop = top - document.body.scrollTop;
+        if(style == "fixed-top" && thisTop < 0) {
+          fixed.classList.add("fixed-top");
         } else {
-          e.removeClass("fixed-top");
-        };
+          fixed.classList.remove("fixed-top");
+        }
 
-        var thisbottom = top - $(window).scrollTop() - $(window).height();
-        if (style == "fixed-bottom" && thisbottom > 0) {
-          e.addClass("fixed-bottom");
+        var thisBottom = top - document.body.scrollTop - document.documentElement.clientHeight;
+        if(style == "fixed-bottom" && thisBottom > 0) {
+          fixed.classList.add("fixed-bottom");
         } else {
-          e.removeClass("fixed-bottom");
-        };
-      });
+          fixed.classList.remove("fixed-bottom");
+        }
+      }, false);
 
-    });
-  });
+    }
   </script>
 </body>
 </html>
