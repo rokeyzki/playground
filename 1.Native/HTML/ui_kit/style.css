@@ -51,8 +51,15 @@ a:focus,a:hover{color:#0AE;} /*链接-悬浮颜色*/
 .wrapper-two
 {background: #f5f5f5 url("./img/wrapper/circuit.png") repeat-x 50% 0;}
 
-.bg-keypoint {
-  background-image: url("./img/index/keypoint.jpg");
+.bg-keypoint-index {
+  background-image: url("./img/index/keypoint.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-keypoint-start {
+  background-image: url("http://7fvhun.com1.z0.glb.clouddn.com/img_apply_slide-01.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -64,4 +71,8 @@ a:focus,a:hover{color:#0AE;} /*链接-悬浮颜色*/
 
 .border-white {
   border-color: #fff;
+}
+
+.text-title {
+  font-size: 30px;
 }
