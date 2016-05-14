@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="google" value="notranslate" />
+  <meta name="format-detection" content="telphone=no, email=no"/>
+  <title>CSS 全局样式 - Oulve Kit</title>
+  <meta name="keywords" content="keywords" />
+  <meta name="description" content="description" />
+  <meta name="author" content="Charles Lim,hi@oulve.com" />
+  <meta name="robots" content="index,follow">
+  <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
+  <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="./oulve.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <link href="https://cdn.bootcss.com/highlight.js/9.2.0/styles/tomorrow-night-blue.min.css" rel="stylesheet">
+</head>
+<body class="wrapper-two">
+  <div class="layout fixed bg box-shadow-small">
+    <div class="container padding-top padding-bottom">
+      <div class="line">
+        <div class="xs2 xm2 xb1">
+          <button class="button icon-navicon float-right bg-white" data-target="#header-demo4"></button>
+          <img src="http://placehold.it/90x45/666/fff.jpg?text=LOGO">
+        </div>
+        <div class="xs10 xm10 xb11 padding-top nav-navicon" id="header-demo4">
+          <div class="xl12 xs12 xm12 xb10">
+            <ul class="nav nav-menu nav-inline nav-pills">
+              <li><a class="text-gray" href="./index.html">Oulve Kit</a></li>
+              <li><a class="text-gray" href="./start.html">起步</a></li>
+              <li><a class="text-gray" href="#">CSS 全局样式</a></li>
+              <li><a class="text-gray" href="./components.html">CSS 复用样式</a></li>
+              <li><a class="text-gray" href="./javascript.html">JavaScript 交互</a></li>
+            </ul>
+          </div>
+          <div class="hidden-l hidden-s hidden-m xb2">
+            <div class="xl6 xb12 text-small text-gray">Email: hi@oulve.com</div>
+            <div class="xl6 xb12 text-small">
+              <a href="#" class="win-homepage text-gray">设为首页</a> | <a href="#" class="win-favorite text-gray">加入收藏</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container fadein-bottom">
+
+    <div class="margin-large-top margin-large-bottom">
+      <div class="keypoint bg-blue bg-inverse radius bg-keypoint-css">
+        <div class="text-title">CSS 全局样式</div>
+        <div class="text-big margin-big-top">设置全局 CSS 样式，重新定义常用的CSS，对文本、图像、按钮、背景、表格等样式重新设置。</div>
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="hidden-l hidden-s xm3">
+        <div class="panel margin-big-bottom margin-large-right">
+          <div class="panel-head"><span class="icon-location-arrow text-gray margin-right"></span>导航</div>
+          <div class="panel-body bg-white radius">
+            <ul class="nav nav-pills nav-navicon bg-white" id="nav-pills1">
+              <li><a href="#">首页</a> </li>
+              <li><a href="#">CSS</a> </li>
+              <li class="active"><a href="#">元件</a> </li>
+              <li class="nav-more"><a href="#">更多</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden-l xs12 hidden-m hidden-b">
+        <div class="panel margin-big-bottom">
+          <div class="panel-head"><span class="icon-location-arrow text-gray margin-right"></span>导航</div>
+          <div class="panel-body bg-white radius">
+            <ul class="nav nav-pills nav-navicon bg-white" id="nav-pills1">
+              <li><a href="#">首页</a> </li>
+              <li><a href="#">CSS</a> </li>
+              <li class="active"><a href="#">元件</a> </li>
+              <li class="nav-more"><a href="#">更多</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="xs12 xm9 text-gray">
+
+        <div class="text-title">栅格系统</div>
+        <hr/>
+        <div class="text-big margin-large-bottom">
+          <p>Oulve Kit 框架内置了一套响应式栅格系统，在不同分辨率或设备可自动适应大小，使得页面在不同设备上都有良好的表现。</p>
+          <p class="text-large">简介</p>
+          <p>网格系统用于通过一系列的行与格子的组合创建页面布局，将每行分成12个格式而形成网格系统。</p>
+          <ul>
+            <li>行 .line 必须包含在 .container 中；当使用100%的页面宽度时，也可以包含在 .container-layout 中</li>
+            <li>格式 .x(*) 必须包含在 .line 中</li>
+            <li>.x(*) 可以随意组合，满行 .line 内的 .x(*) 数值的总和等于12；大于12则另起一行显示；</li>
+            <li>使用 .line 时，格子的间距为 0px；也可以使用 .line-small(4px)、.line-middle(10px)、.line-big(20px) 来改变格子间距</li>
+            <li>x：水平方向的格子</li>
+            <li>数字(*)：包含格子的数量</li>
+            <li>l：手机 - 超小屏幕 (little)</li>
+            <li>s：平板 - 小屏幕 (small)</li>
+            <li>m：笔记本桌面 - 中屏幕 (middle)</li>
+            <li>b：宽屏电脑桌面 - 大屏幕 (big)</li>
+          </ul>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">常规布局</p>
+          <p>常规布局即为非响应式布局，即为在任何屏幕格子比例上都一样的排列方式，不会随着屏幕不同而展示不同的布局。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+                <div class="x1">
+                  <span>x1</span>
+                </div>
+              </div>
+              <div class="line clearfix">
+                <div class="x3">
+                  <span>x3</span>
+                </div>
+                <div class="x9">
+                  <span>x9</span>
+                </div>
+              </div>
+              <div class="line clearfix">
+                <div class="x4">
+                  <span>x4</span>
+                </div>
+                <div class="x4">
+                  <span>x4</span>
+                </div>
+                <div class="x4">
+                  <span>x4</span>
+                </div>
+              </div>
+              <div class="line clearfix">
+                <div class="x6">
+                  <span>x6</span>
+                </div>
+                <div class="x6">
+                  <span>x6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="x3">
+      <span>x3</span>
+    </div>
+    <div class="x9">
+      <span>x9</span>
+    </div>
+  </div>
+  <div class="line">
+    <div class="x4">
+      <span>x4</span>
+    </div>
+    <div class="x4">
+      <span>x4</span>
+    </div>
+    <div class="x4">
+      <span>x4</span>
+    </div>
+  </div>
+  <div class="line">
+    <div class="x6">
+      <span>x6</span>
+    </div>
+    <div class="x6">
+      <span>x6</span>
+    </div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">常规布局 - 水平移动</p>
+          <p>给例子添加 .x(*)-move 样式，可以快速实现元素的水平方向移动。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="x3 x5-move">x3 x5-move 3格-移动5格</div>
+              </div>
+              <div class="line">
+                <div class="x5 x2-move">x5 x2-move 5格-移动2格</div>
+              </div>
+              <div class="line">
+                <div class="x4 x1-move">x4 x1-move 4格-移动1格</div>
+                <div class="x3 x2-move">x3 x2-move 4格-移动2格</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="x3 x5-move">x3 x5-move 3格-移动5格</div>
+  </div>
+  <div class="line">
+    <div class="x5 x2-move">x5 x2-move 5格-移动2格</div>
+  </div>
+  <div class="line">
+    <div class="x4 x1-move">x4 x1-move 4格-移动1格</div>
+    <div class="x3 x2-move">x3 x2-move 4格-移动2格</div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">常规布局 - 内嵌套</p>
+          <p>大格子里面包含小格子，12个格子为一整行，超出则为换行。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="x6">
+                  <div class="x3">x3</div>
+                  <div class="x3">x3</div>
+                  <div class="x3">x3</div>
+                  <div class="x3">x3</div>
+                </div>
+              </div>
+              <div class="line">
+                <div class="x9">
+                  <div class="x6">x6</div>
+                  <div class="x6">x6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="x6">
+      <div class="x3">x3</div>
+      <div class="x3">x3</div>
+      <div class="x3">x3</div>
+      <div class="x3">x3</div>
+    </div>
+  </div>
+  <div class="line">
+    <div class="x9">
+      <div class="x6">x6</div>
+      <div class="x6">x6</div>
+    </div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">常规布局 - 格子排序</p>
+          <p>使用 .x(*)-left 和 .x(*)-right 样式，可以改变格子的排序显示。</p>
+        </div>
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="x4 x8-left">x4 x8-left</div>
+                <div class="x8 x4-right">x8 x4-right</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="x4 x8-left">x4 x8-left</div>
+    <div class="x8 x4-right">x8 x4-right</div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big margin-big-bottom">
+          <p class="text-large">跨屏响应式布局</p>
+          <p>跨屏响应式布局，分为两种方式，在支持 CSS3 的浏览器中，拼图采用的是媒体查询 (media query)，当浏览器不支持 css3 时，拼图引入 Respond.js 来实现媒体查询。</p>
+          <p>媒体查询方式</p>
+          <ul class="margin-big-bottom">
+            <li>超小屏幕 (手机，小于 760px) 没有任何媒体查询相关的代码，因为这在 拼图 中是默认的</li>
+            <li>小屏幕 (平板，大于等于 760px) @media (min-width: 760px) { ... }</li>
+            <li>中等屏幕 (桌面显示器，大于等于 1000px) @media (min-width: 1000px) { ... }</li>
+            <li>大屏幕 (宽屏显示器，大于等于 1200px) @media (min-width: 1200px) { ... }</li>
+          </ul>
+
+          <p>跨屏响应参数</p>
+          <div class="table-responsive margin-big-bottom">
+            <table class="table table-bordered bg-white">
+              <tbody>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>超小屏幕 <small>(手机&lt;760px)</small></th>
+                  <th>小屏幕 <small>(平板≥760px)</small></th>
+                  <th>中屏幕 <small>(桌面≥1000px)</small></th>
+                  <th>大屏幕 <small>(宽屏≥1200px)</small></th>
+                </tr>
+                <tr>
+                  <td>.container最大值</td>
+                  <td>自动</td>
+                  <td>740px</td>
+                  <td>980px</td>
+                  <td>1180px</td>
+                </tr>
+                <tr>
+                  <td>格子样式</td>
+                  <td>.xl-(*)</td>
+                  <td>.xs-(*)</td>
+                  <td>.xm-(*)</td>
+                  <td>.xb-(*)</td>
+                </tr>
+                <tr>
+                  <td>响应效果</td>
+                  <td>总是水平排列</td>
+                  <td colspan="3">水平排列，当屏幕小于这些阈值时堆叠在一起</td>
+                </tr>
+                <tr>
+                  <td>格子数</td>
+                  <td colspan="4">12</td>
+                </tr>
+                <tr>
+                  <td colspan="5" align="center"><strong>响应显示及隐藏：</strong>控制在对应屏幕下的显示和隐藏</td>
+                </tr>
+                <tr>
+                  <td>显示响应</td>
+                  <td>.show-l</td>
+                  <td>.show-s</td>
+                  <td>.show-m</td>
+                  <td>.show-b</td>
+                </tr>
+                <tr>
+                  <td>隐藏响应</td>
+                  <td>.hidden-l</td>
+                  <td>.hidden-s</td>
+                  <td>.hidden-m</td>
+                  <td>.hidden-b</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>格子间距</p>
+          <div class="table-responsive">
+            <table class="table table-bordered bg-white">
+              <tbody>
+                <tr>
+                  <td>行样式</td>
+                  <td>.line</td>
+                  <td>.line-small</td>
+                  <td>.line-middle</td>
+                  <td>.line-big</td>
+                </tr>
+                <tr>
+                  <td>间距</td>
+                  <td>0px</td>
+                  <td>4px</td>
+                  <td>10px</td>
+                  <td>20px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">响应示例</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+                <div class="xl1">xl1</div>
+              </div>
+              <div class="line">
+                <div class="xs3">xs3</div>
+                <div class="xs9">xs9</div>
+              </div>
+              <div class="line">
+                <div class="xm4">xm4</div>
+                <div class="xm4">xm4</div>
+                <div class="xm4">xm4</div>
+              </div>
+              <div class="line">
+                <div class="xb6">xb6</div>
+                <div class="xb6">xb6</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+    <div class="xl1">xl1</div>
+  </div>
+  <div class="line">
+    <div class="xs3">xs3</div>
+    <div class="xs9">xs9</div>
+  </div>
+  <div class="line">
+    <div class="xm4">xm4</div>
+    <div class="xm4">xm4</div>
+    <div class="xm4">xm4</div>
+  </div>
+  <div class="line">
+    <div class="xb6">xb6</div>
+    <div class="xb6">xb6</div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">响应式布局 - 内嵌套</p>
+          <p>给例子添加 .xl(*)-move, .xs(*)-move, .xm(*)-move, .xb(*)-move样式，可以快速实现元素的水平方向移动。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="xl3 xl5-move">xl3 xl5-move 3格-移动5格</div>
+              </div>
+              <div class="line">
+                <div class="xs5 xs2-move">xs5 xs2-move 5格-移动2格</div>
+              </div>
+              <div class="line">
+                <div class="xm4 xm1-move">xm4 xm1-move 4格-移动1格</div>
+                <div class="xm3 xm2-move">xm4 xm2-move 4格-移动2格</div>
+              </div>
+              <div class="line">
+                <div class="xb3 xb1-move">xb3 xb1-move 3格-移动1格</div>
+                <div class="xb3 xb1-move">xb3 xb1-move 3格-移动1格</div>
+                <div class="xb3 xb1-move">xb3 xb1-move 3格-移动1格</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="xl3 xl5-move">xl3 xl5-move 3格-移动5格</div>
+  </div>
+  <div class="line">
+    <div class="xs5 xs2-move">xs5 xs2-move 5格-移动2格</div>
+  </div>
+  <div class="line">
+    <div class="xm4 xm1-move">xm4 xm1-move 4格-移动1格</div>
+    <div class="xm3 xm2-move">xm4 xm2-move 4格-移动2格</div>
+  </div>
+  <div class="line">
+    <div class="xb3 xb1-move">xb3 xb1-move 3格-移动1格</div>
+    <div class="xb3 xb1-move">xb3 xb1-move 3格-移动1格</div>
+    <div class="xb3 xb1-move">xb3 xb1-move 3格-移动1格</div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">响应式布局 - 内嵌套</p>
+          <p>大格子里面包含小格子，12个格子为一整行，超出则为换行。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="xl6">
+                  <div class="xl3">xl3</div>
+                  <div class="xl3">xl3</div>
+                  <div class="xl3">xl3</div>
+                  <div class="xl3">xl3</div>
+                </div>
+              </div>
+              <div class="line">
+                <div class="xs8">
+                  <div class="xs6">xs6</div>
+                  <div class="xs6">xs6</div>
+                </div>
+              </div>
+              <div class="line">
+                <div class="xm10">
+                  <div class="xm4">xm4</div>
+                  <div class="xm4">xm4</div>
+                  <div class="xm4">xm4</div>
+                </div>
+              </div>
+              <div class="line">
+                <div class="xb12">
+                  <div class="xb3">xb3</div>
+                  <div class="xb3">xb3</div>
+                  <div class="xb3">xb3</div>
+                  <div class="xb3">xb3</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="xl6">
+      <div class="xl3">xl3</div>
+      <div class="xl3">xl3</div>
+      <div class="xl3">xl3</div>
+      <div class="xl3">xl3</div>
+    </div>
+  </div>
+  <div class="line">
+    <div class="xs8">
+      <div class="xs6">xs6</div>
+      <div class="xs6">xs6</div>
+    </div>
+  </div>
+  <div class="line">
+    <div class="xm10">
+      <div class="xm4">xm4</div>
+      <div class="xm4">xm4</div>
+      <div class="xm4">xm4</div>
+    </div>
+  </div>
+  <div class="line">
+    <div class="xb12">
+      <div class="xb3">xb3</div>
+      <div class="xb3">xb3</div>
+      <div class="xb3">xb3</div>
+      <div class="xb3">xb3</div>
+    </div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">响应式布局 - 格子排序</p>
+          <p>使用 .xl(*)-left 和 .xl(*)-right、.xs(*)-left 和 .xs(*)-right、.xm(*)-left 和 .xm(*)-right、.xb(*)-left 和 .xb(*)-right 样式，可以改变格子的排序显示。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="xl2 xl10-left">xl2 xl10-left</div>
+                <div class="xl10 xl2-right">xl10 xl2-right</div>
+              </div>
+              <div class="line">
+                <div class="xs4 xs8-left">xs4 xs8-left</div>
+                <div class="xs8 xs4-right">xs8 xs4-right</div>
+              </div>
+              <div class="line">
+                <div class="xm6 xm6-left">xm6 xm6-left</div>
+                <div class="xm6 xm6-right">xm6 xm6-right</div>
+              </div>
+              <div class="line">
+                <div class="xb8 xb4-left">xb8 xb4-left</div>
+                <div class="xb4 xb8-right">xb4 xb8-right</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="xl2 xl10-left">xl2 xl10-left</div>
+    <div class="xl10 xl2-right">xl10 xl2-right</div>
+  </div>
+  <div class="line">
+    <div class="xs4 xs8-left">xs4 xs8-left</div>
+    <div class="xs8 xs4-right">xs8 xs4-right</div>
+  </div>
+  <div class="line">
+    <div class="xm6 xm6-left">xm6 xm6-left</div>
+    <div class="xm6 xm6-right">xm6 xm6-right</div>
+  </div>
+  <div class="line">
+    <div class="xb8 xb4-left">xb8 xb4-left</div>
+    <div class="xb4 xb8-right">xb4 xb8-right</div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">显示及隐藏</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="doc-grid">
+              <div class="line">
+                <div class="xs4 hidden-l">hidden-l超小屏幕下隐藏</div>
+                <div class="xs8 show-b" style="display: none;">show-b 宽屏下显示</div>
+              </div>
+              <div class="line">
+                <div class="xm4 hidden-s">小屏幕下隐藏</div>
+                <div class="xm4 hidden-m">中屏幕下隐藏</div>
+                <div class="xm4 show-l" style="display: none;">超小屏幕下显示</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="line">
+    <div class="xs4 hidden-l">hidden-l超小屏幕下隐藏</div>
+    <div class="xs8 show-b" style="display: none;">show-b 宽屏下显示</div>
+  </div>
+  <div class="line">
+    <div class="xm4 hidden-s">小屏幕下隐藏</div>
+    <div class="xm4 hidden-m">中屏幕下隐藏</div>
+    <div class="xm4 show-l" style="display: none;">超小屏幕下显示</div>
+  </div>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        <div class="text-title">文本</div>
+        <hr/>
+
+        <div class="text-big">
+          <p class="text-large">标题文本</p>
+          <p>HTML 的标题文本，从 h1 到 h6，同时也提供了 .h1 到 .h6 的样式。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <h1>h1. 拼图前端框架标题</h1><hr/>
+            <h2>h2. 拼图前端框架标题</h2><hr/>
+            <h3>h3. 拼图前端框架标题</h3><hr/>
+            <h4>h4. 拼图前端框架标题</h4><hr/>
+            <h5>h5. 拼图前端框架标题</h5><hr/>
+            <h6>h6. 拼图前端框架标题</h6>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <h1>h1. 拼图前端框架标题</h1>
+  <h2>h2. 拼图前端框架标题</h2>
+  <h3>h3. 拼图前端框架标题</h3>
+  <h4>h4. 拼图前端框架标题</h4>
+  <h5>h5. 拼图前端框架标题</h5>
+  <h6>h6. 拼图前端框架标题</h6>
+              </code>
+            </pre>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="layout bg-footer">
+    <div class="container bg-inverse padding-large-top padding-bottom">
+      <div class="line-big">
+        <div class="xl12 xs9 xm9 xb9 margin-big-bottom">
+          <dl class="dl-inline clearfix">
+            <dt><span class="icon-link margin-right"></span>友情链接：</dt>
+            <dd>
+              <ul class="list-inline">
+                <li><a href="#" target="_blank">11111</a></li>
+                <li><a href="#" target="_blank">11111</a></li>
+                <li><a href="#" target="_blank">11111</a></li>
+              </ul>
+            </dd>
+
+            <dt><span class="icon-shield margin-right"></span>技术支持：</dt>
+            <dd>
+              <ul class="list-inline">
+                <li>Powered by <a href="http://oulve.com" target="_blank" title="Oulve Studio 欧略工坊 企业建站首选">欧略工坊</a></li>
+                <li>本项目源码受 <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a> 开源协议保护，文档受 <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> 开源协议保护。</li>
+              </ul>
+            </dd>
+            <dt><span class="icon-bookmark margin-right"></span>版权所有：</dt>
+            <dd>
+              <ul class="list-inline">
+                <li>Copyright &#169; 2016 <a href="#">Oulve Studio</a>.</li>
+                <li>All Rights Reserved.</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+
+        <div class="xl12 xs3 xm3 xb3">
+          <div class="border-small border-left padding-big-left">
+            <dl>
+              <dt><span class="icon-phone margin-right"></span>联系方式：</dt>
+              <dd>
+                <div class="margin-small-bottom">联系人：林川淇</div>
+                <div>手机：+86 18559916015</div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    function htmlEncode(str) {
+      var div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+
+    var htmlCodes = document.querySelectorAll('.html');
+    for(var i=0; i<htmlCodes.length; i++){
+      htmlCodes[i].innerHTML = htmlEncode(htmlCodes[i].innerHTML);
+    }
+
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+</html>

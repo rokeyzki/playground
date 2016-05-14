@@ -65,6 +65,13 @@ a:focus,a:hover{color:#0AE;} /*链接-悬浮颜色*/
   background-position: center;
 }
 
+.bg-keypoint-css {
+  background-image: url("http://7fvhun.com1.z0.glb.clouddn.com/img_apply_slide-03.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .bg-footer {
     background: url("http://oulve-open.qiniudn.com/img_apply_wall.png") repeat top center;
 }
@@ -75,4 +82,18 @@ a:focus,a:hover{color:#0AE;} /*链接-悬浮颜色*/
 
 .text-title {
   font-size: 30px;
+}
+
+.doc-grid {
+  padding: 10px;
+}
+
+.doc-grid div div {
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #e7e7e7;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
 }
