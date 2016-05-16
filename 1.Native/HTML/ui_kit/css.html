@@ -19,7 +19,7 @@
   <link href="https://cdn.bootcss.com/highlight.js/9.2.0/styles/tomorrow-night-blue.min.css" rel="stylesheet">
 </head>
 <body class="wrapper-two">
-  <div class="layout fixed bg box-shadow-small">
+  <div class="layout bg box-shadow-small">
     <div class="container padding-top padding-bottom">
       <div class="line">
         <div class="xs2 xm2 xb1">
@@ -58,14 +58,14 @@
 
     <div class="line">
       <div class="hidden-l hidden-s xm3">
-        <div class="panel margin-big-bottom margin-large-right">
+        <div class="panel margin-big-bottom margin-large-right fixed">
           <div class="panel-head"><span class="icon-location-arrow text-gray margin-right"></span>导航</div>
           <div class="panel-body bg-white radius">
-            <ul class="nav nav-pills nav-navicon bg-white" id="nav-pills1">
-              <li><a href="#">首页</a> </li>
-              <li><a href="#">CSS</a> </li>
-              <li class="active"><a href="#">元件</a> </li>
-              <li class="nav-more"><a href="#">更多</a> </li>
+            <ul class="spy nav nav-pills nav-navicon bg-white" data-offset-spy="100" id="nav-pills1">
+              <li class="active"><a href="#spy1">栅格系统</a> </li>
+              <li><a href="#spy2">文本</a> </li>
+              <li><a href="#spy3">背景、边框、圆角</a> </li>
+              <li><a href="#spy4">边界、填充</a> </li>
             </ul>
           </div>
         </div>
@@ -76,10 +76,10 @@
           <div class="panel-head"><span class="icon-location-arrow text-gray margin-right"></span>导航</div>
           <div class="panel-body bg-white radius">
             <ul class="nav nav-pills nav-navicon bg-white" id="nav-pills1">
-              <li><a href="#">首页</a> </li>
+              <li class="active"><a href="#">首页</a> </li>
               <li><a href="#">CSS</a> </li>
-              <li class="active"><a href="#">元件</a> </li>
-              <li class="nav-more"><a href="#">更多</a> </li>
+              <li><a href="#">元件</a> </li>
+              <li><a href="#">更多</a> </li>
             </ul>
           </div>
         </div>
@@ -87,7 +87,7 @@
 
       <div class="xs12 xm9 text-gray">
 
-        <div class="text-title">栅格系统</div>
+        <div class="text-title" id="spy1">栅格系统</div>
         <hr/>
         <div class="text-big margin-large-bottom">
           <p>Oulve Kit 框架内置了一套响应式栅格系统，在不同分辨率或设备可自动适应大小，使得页面在不同设备上都有良好的表现。</p>
@@ -703,7 +703,7 @@
           </div>
         </div>
 
-        <div class="text-title">文本</div>
+        <div class="text-title" id="spy2">文本</div>
         <hr/>
 
         <div class="text-big">
@@ -1027,7 +1027,7 @@
           </div>
         </div>
 
-        <div class="text-title">背景、边框、圆角</div>
+        <div class="text-title" id="spy3">背景、边框、圆角</div>
         <hr/>
 
         <div class="text-big">
@@ -1318,6 +1318,89 @@
             </pre>
           </div>
         </div>
+
+        <div class="text-title" id="spy4">边界、填充</div>
+        <hr/>
+
+        <div class="text-big">
+          <p>包含边界(.margin)和填充(.padding)，在理解他们与边框、内容的关系时，应该先了解下CSS的盒子模型。</p>
+          <p class="text-large">盒子模型</p>
+          <p>每个盒子都有：边界、边框、填充、内容四个属性；每个属性都包括四个部分：上、右、下、左；这四部分可同时设置，也可分别设置；举个箱子例子，最里面的物品(内容)、物品由泡沫(填充)保护着、然后箱子(边框)、最后是箱子离你的距离(边界)，这就是一个完整的盒子模型。</p>
+        </div>
+
+        <div class="bg-green text-center text-white padding margin-large-bottom">
+          <div class="margin-bottom">边界：margin</div>
+          <div class="bg-yellow padding">
+            <div class="margin-bottom">边框：border</div>
+            <div class="bg-blue padding">
+              <div class="margin-bottom">填充：padding</div>
+              <div class="bg-white text-gray padding">
+                <div>内容：content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-big">
+          <p class="text-large">边界位置</p>
+          <p>包含上、右、下、左及四个都有的位置属性，默认的.margin外边距大小为10px。</p>
+        </div>
+
+        <div class="panel margin-big-top margin-big-bottom">
+          <div class="panel-head">示例</div>
+          <div class="panel-body bg-white">
+            <div class="line">
+              <div class="x6 x3-move">
+                <div class="bg-green" style="overflow: hidden;">
+                  <div class="margin bg text-gray text-center clearfix">默认边界</div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="line">
+              <div class="x6 x3-move">
+                <div class="bg-green" style="overflow: hidden;">
+                  <div class="margin-top bg text-gray text-center clearfix">上边界</div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="line">
+              <div class="x6 x3-move">
+                <div class="bg-green" style="overflow: hidden;">
+                  <div class="margin-right bg text-gray text-center clearfix">右边界</div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="line">
+              <div class="x6 x3-move">
+                <div class="bg-green" style="overflow: hidden;">
+                  <div class="margin-bottom bg text-gray text-center clearfix">下边界</div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="line">
+              <div class="x6 x3-move">
+                <div class="bg-green" style="overflow: hidden;">
+                  <div class="margin-left bg text-gray text-center clearfix">左边界</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <pre>
+              <code class="html radius">
+  <div class="margin">默认边界</div>
+  <div class="margin-top">上边界</div>
+  <div class="margin-right">右边界</div>
+  <div class="margin-bottom">下边界</div>
+  <div class="margin-left">左边界</div>
+              </code>
+            </pre>
+          </div>
+        </div>
       <!-- end -->
       </div>
 
@@ -1370,6 +1453,7 @@
     </div>
   </div>
 
+  <script src="./oulve.js"></script>
   <script src="https://cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
   <script>
     function htmlEncode(str) {
