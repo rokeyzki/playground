@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      font-size: 13px;
+      line-height: 1.428571429;
+      color: #333;
+      font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Hiragino Kaku Gothic Pro", Meiryo, "Malgun Gothic", sans-serif;
+      text-shadow: 1.5px 1.5px 1.5px #d0e5f8;
+    }
+
+    #foo {
+      position: relative;
+      display: inline-block;
+
+      max-width: 300px;
+      margin: 100px;
+      border-radius: 3px;
+
+      box-shadow: 0px 3px 10px #999;
+
+      animation: fooanima 2s ease none infinite alternate;
+    }
+
+    #foo-header img {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      max-width: 300px;
+    }
+
+    #foo-content {
+      padding: 15px;
+      text-indent: 26px;
+      word-wrap: break-word;
+    }
+
+
+    @keyframes fooanima {
+      0% {
+        top: 100px;
+      }
+      100% {
+        top: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="foo">
+    <div id="foo-header">
+      <img src="https://picturepan2.github.io/spectre/demo/img/osx-yosemite.jpg">
+    </div>
+
+    <div id="foo-content">
+      革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。
+    </div>
+  </div>
+</body>
+</html>
