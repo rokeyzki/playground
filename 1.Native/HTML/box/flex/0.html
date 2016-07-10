@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8"> <!-- 字符编码：utf-8 -->
+  <meta name="renderer" content="webkit"> <!-- 针对多核浏览器优先使用 webkit 内核 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 优先使用 IE 最新版本和 Chrome -->
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> <!-- 禁止百度手机自动转码 -->
+  <meta name="google" value="notranslate" /> <!-- 禁止Chrome自动翻译 -->
+  <meta name="format-detection" content="telphone=no, email=no"/> <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+  <title>Document</title> <!-- SEO：定义页面标题 -->
+  <meta name="keywords" content="keywords" /> <!-- SEO：定义页面关键词 -->
+  <meta name="description" content="description" /> <!-- SEO：页面描述内容 -->
+  <meta name="author" content="Charles Lim,hi@oulve.com" /> <!-- SEO：定义页面作者 -->
+  <meta name="robots" content="index,follow"> <!-- SEO：定义页面搜索引擎索引方式 -->
+  <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
+  <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <style>
+    .box {
+      display: flex;
+
+      align-content: stretch; /* 多主轴并行对齐方式 */
+
+      flex-direction: row; /* 主轴延伸方向 */
+      flex-wrap: wrap; /* 主轴换行方向 */
+      /* flex-flow: row wrap; */
+
+      justify-content: center; /* 主轴基准对齐方式 */
+      align-items: flex-end; /* 切轴基准对齐方式 */
+
+      min-width: 100px;
+      height: 500px;
+      border: 1px solid #666;
+    }
+
+    .item {
+      flex-grow: 1; /* 项目的放大比例 */
+      flex-shrink: 1; /* 项目的缩小比例 */
+      flex-basis: auto;
+      /* flex: 0 1 auto; */
+
+      width: 100px;
+      height: 100px;
+      background-color: #999;
+      margin: 10px;
+
+      text-align: center;
+      line-height: 100px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    #te {
+      align-self: flex-start; /* 针对切轴基准对齐（align-items）的特例项目设置 */
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- order：项目的排列顺序 -->
+    <div class="item" id="te" style="order: 3;"> A </div>
+    <div class="item" style="order: 2;"> B </div>
+    <div class="item" style="order: 2;"> C </div>
+    <div class="item" style="order: 1;"> D </div>
+    <div class="item" style=""> E </div>
+    <div class="item" style=""> F </div>
+    <div class="item" style=""> G </div>
+  </div>
+</body>
+</html>
