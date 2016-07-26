@@ -17,24 +17,16 @@
   <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
 </head>
 <body>
-  <div id="example">
-    <my-component></my-component><my-component></my-component><my-component></my-component>
-  </div>
-
-  <script src="https://cdn.bootcss.com/vue/1.0.16/vue.js"></script>
+  <x-foo></x-foo>
+  <x-foo></x-foo><x-foo></x-foo><x-foo></x-foo><x-foo></x-foo>
   <script>
-    // 定义
-    var MyComponent = Vue.extend({
-      template: '<div>A custom component! 66666666666666</div>'
-    })
+   /* var XFoo = document.registerElement('x-foo');
+    document.body.appendChild(new XFoo());*/
 
-    // 注册
-    Vue.component('my-component', MyComponent)
-
-    // 创建根实例
-    new Vue({
-      el: '#example'
-    })
+    var mytag = document.getElementsByTagName("x-foo");
+    for (var i = 0; i < mytag.length; i++) {
+      mytag[i].textContent = "I am a my-tag element.";
+    }
   </script>
 </body>
 </html>

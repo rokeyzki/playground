@@ -14,27 +14,24 @@
   <meta name="robots" content="index,follow"> <!-- SEO：定义页面搜索引擎索引方式 -->
   <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
   <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  <!-- normalize.css：css 初始化(react)，统一各浏览器下的文档空白样式 -->
   <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <style type="text/css">
+    #foo {
+      width: 100%;
+      background-color: grey;
+    }
+  </style>
 </head>
 <body>
-  <div id="example">
-    <my-component></my-component><my-component></my-component><my-component></my-component>
-  </div>
+  <div id="foo"></div>
 
-  <script src="https://cdn.bootcss.com/vue/1.0.16/vue.js"></script>
   <script>
-    // 定义
-    var MyComponent = Vue.extend({
-      template: '<div>A custom component! 66666666666666</div>'
-    })
-
-    // 注册
-    Vue.component('my-component', MyComponent)
-
-    // 创建根实例
-    new Vue({
-      el: '#example'
-    })
+    document.onreadystatechange = function(){
+      if(this.readyState == "complete"){
+        foo.style.setProperty("height", document.documentElement.clientHeight + "px");
+      }
+    };
   </script>
 </body>
 </html>
