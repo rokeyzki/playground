@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8"> <!-- 字符编码：utf-8 -->
+  <meta name="renderer" content="webkit"> <!-- 针对多核浏览器优先使用 webkit 内核 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 优先使用 IE 最新版本和 Chrome -->
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> <!-- 禁止百度手机自动转码 -->
+  <meta name="google" value="notranslate" /> <!-- 禁止Chrome自动翻译 -->
+  <meta name="format-detection" content="telphone=no, email=no"/> <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+  <title>Document</title> <!-- SEO：定义页面标题 -->
+  <meta name="keywords" content="keywords" /> <!-- SEO：定义页面关键词 -->
+  <meta name="description" content="description" /> <!-- SEO：页面描述内容 -->
+  <meta name="author" content="Charles Lim,hi@oulve.com" /> <!-- SEO：定义页面作者 -->
+  <meta name="robots" content="index,follow"> <!-- SEO：定义页面搜索引擎索引方式 -->
+  <link rel="shortcut icon" type="image/x-icon" href="http://oulve.com/favicon.ico" />
+  <link rel="bookmark" href="http://oulve.com/favicon.ico" />
+  <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- 子组件模板 -->
+  <template id="child-template">
+    <input v-model="msg">
+    <button v-on:click="notify">Dispatch Event</button>
+  </template>
+
+  <!-- 父组件模板 -->
+  <div id="events-example">
+    <p>Messages: {{ messages | json }}</p>
+    <child></child>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/1.0.26/vue.js"></script>
+  <script>
+    // 注册子组件
+    // 将当前消息派发出去
+    Vue.component('child', {
+      template: '#child-template',
+      data: function () {
+        return { msg: 'hello' }
+      },
+      methods: {
+        notify: function () {
+          if (this.msg.trim()) {
+            this.$dispatch('child-msg', this.msg)
+            this.msg = ''
+          }
+        }
+      }
+    })
+
+    // 初始化父组件
+    // 将收到消息时将事件推入一个数组
+    var parent = new Vue({
+      el: '#events-example',
+      data: {
+        messages: []
+      },
+      // 在创建实例时 `events` 选项简单地调用 `$on`
+      events: {
+        'child-msg': function (msg) {
+          // 事件回调内的 `this` 自动绑定到注册它的实例上
+          this.messages.push(msg)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
