@@ -17,50 +17,46 @@
   <link href="https://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- 子组件模板 -->
-  <template id="child-template">
-    <input v-model="msg">
-    <button v-on:click="notify">Dispatch Event</button>
-  </template>
 
-  <!-- 父组件模板 -->
-  <div id="events-example">
-    <p>Messages: {{ messages | json }}</p>
-    <child></child>
+  <div id="app">
+    <p>{{ message }}</p>
+    <input type="text" v-model="message">
   </div>
 
   <script src="https://cdn.bootcss.com/vue/1.0.26/vue.js"></script>
   <script>
-    // 注册子组件
-    // 将当前消息派发出去
-    Vue.component('child', {
-      template: '#child-template',
-      data: function () {
-        return { msg: 'hello' }
-      },
-      methods: {
-        notify: function () {
-          if (this.msg.trim()) {
-            this.$dispatch('child-msg', this.msg)
-            this.msg = ''
-          }
-        }
-      }
-    })
-
-    // 初始化父组件
-    // 将收到消息时将事件推入一个数组
-    var parent = new Vue({
-      el: '#events-example',
+    new Vue({
+      el: '#app',
       data: {
-        messages: []
+        message: "Hello Vue.js!"
       },
-      // 在创建实例时 `events` 选项简单地调用 `$on`
-      events: {
-        'child-msg': function (msg) {
-          // 事件回调内的 `this` 自动绑定到注册它的实例上
-          this.messages.push(msg.trim())
-        }
+      init: function(){ // 在实例化开始前调用
+        console.log("init");
+      },
+      created: function(){ // 在实例化结束后调用（这意味着已建立：数据绑定，计算属性，方法，watcher/事件回调）
+        console.log("created");
+      },
+      beforeCompile: function(){ // 在DOM编译开始前调用
+        console.log("beforeCompile");
+      },
+      compiled: function(){ // 在DOM编译结束后调用
+        console.log("compiled");
+      },
+      attached: function(){ // 在vm.$el插入DOM开始前调用
+        console.log("attached");
+      },
+      ready: function(){ // 在vm.$el插入DOM结束后调用
+        console.log("ready");
+      },
+
+      detached: function(){
+        console.log("detached");
+      },
+      beforeDestroy: function(){
+        console.log("beforeDestroy");
+      },
+      destroyed: function(){
+        console.log("destroyed");
       }
     })
   </script>
