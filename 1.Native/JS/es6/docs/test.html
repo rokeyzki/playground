@@ -17,19 +17,9 @@
 </head>
 <body>
   <script type="text/babel">
-    const math = (() => {
-      const _flag = 10;
-      return {
-        add(a, b) {
-          return _flag + (a + b);
-        },
-        minus(a, b) {
-          return _flag + (a - b);
-        }
-      };
-    })();
-
-    console.log(math.add(1,2));
+    var foo1 = Symbol('foo');
+    var foo2 = Symbol('foo');
+    console.log((foo1 == foo2));
   </script>
   <!-- babel-standalone：使浏览器支持将es6或jsx编译为es5，环境限制：无，标签限制：<script type="text/babel"></script> -->
   <script src="https://cdn.bootcss.com/babel-standalone/6.15.0/babel.min.js"></script>
