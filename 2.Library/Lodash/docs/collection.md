@@ -53,12 +53,55 @@ _.flatMapDeep([1, 2], duplicate);
 // => [1, 1, 2, 2]
 ```
 
+### invokeMap
+```javascript
+_.invokeMap([[5, 1, 7], [3, 2, 1]], 'sort');
+// => [[1, 5, 7], [1, 2, 3]]
+_.invokeMap([123, 456], String.prototype.split, '');
+// => [['1', '2', '3'], ['4', '5', '6']]
+```
+
 ## 归类
 ### countBy
+```javascript
+_.countBy([6.1, 4.2, 6.3], Math.floor);
+// => { '4': 1, '6': 2 }
+```
+
 ### groupBy
+```javascript
+_.groupBy([6.1, 4.2, 6.3], Math.floor);
+// => { '4': [4.2], '6': [6.1, 6.3] }
+```
+
 ### keyBy
-### orderBy
+```javascript
+var array = [
+  { 'dir': 'left', 'code': 97 },
+  { 'dir': 'right', 'code': 100 }
+];
+_.keyBy(array, 'dir');
+// => { 'left': { 'dir': 'left', 'code': 97 }, 'right': { 'dir': 'right', 'code': 100 } }
+_.keyBy(array, function(o) {
+  return String.fromCharCode(o.code);
+});
+// => { 'a': { 'dir': 'left', 'code': 97 }, 'd': { 'dir': 'right', 'code': 100 } }
+```
+
 ### partition
+```javascript
+var users = [
+  { 'user': 'barney',  'age': 36, 'active': false },
+  { 'user': 'fred',    'age': 40, 'active': true },
+  { 'user': 'pebbles', 'age': 1,  'active': false }
+];
+_.partition(users, function(o) { return o.active; });
+// => objects for [['fred'], ['barney', 'pebbles']]
+_.partition(users, { 'age': 1, 'active': false });
+// => objects for [['pebbles'], ['barney', 'fred']]
+_.partition(users, ['active', false]);
+// => objects for [['barney', 'pebbles'], ['fred']]
+```
 
 ## 查找
 ### find
@@ -153,9 +196,35 @@ _.reduceRight(array, function(flattened, other) {
 ```
 
 ## 排序
-### invokeMap
 ### shuffle
+```javascript
+_.shuffle([1, 2, 3, 4]);
+// => [4, 1, 3, 2]
+```
+
 ### sortBy
+```javascript
+var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 36 },
+  { 'user': 'fred',   'age': 40 },
+  { 'user': 'barney', 'age': 34 }
+];
+_.sortBy(users, ['user', 'age']);
+// => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+```
+
+### orderBy
+```javascript
+var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 40 },
+  { 'user': 'barney', 'age': 36 }
+];
+_.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+// => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+```
 
 ## 判断
 ### every
@@ -171,8 +240,38 @@ _.every(users, ['active', false]);
 _.every(users, 'active');
 // => false
 ```
+
 ### includes
+```javascript
+_.includes([1, 2, 3], 1);
+// => true
+_.includes([1, 2, 3], 1, 2);
+// => false
+_.includes({ 'a': 1, 'b': 2 }, 1);
+// => true
+_.includes('abcd', 'bc');
+// => true
+```
+
 ### some
+```javascript
+var users = [
+  { 'user': 'barney', 'active': true },
+  { 'user': 'fred',   'active': false }
+];
+_.some(users, { 'user': 'barney', 'active': false });
+// => false
+_.some(users, ['active', false]);
+// => true
+_.some(users, 'active');
+// => true
+```
 
 ## 属性
 ### size
+```javascript
+_.size([1, 2, 3]);
+// => 3
+_.size({ 'a': 1, 'b': 2 });
+// => 2
+```
