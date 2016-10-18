@@ -18,36 +18,18 @@
 <body>
   <script src="https://cdn.bootcss.com/lodash.js/4.15.0/lodash.min.js"></script>
   <script type="text/javascript">
-function foo(type, x){
-  console.log(`${type}:${x}`);
+function foo(sign){
+  var date = new Date();
+  return `${sign}: ${date.getTime()}`;
 }
-
-var fooBefore = _.before(3, foo);
-
-fooBefore('before', 1);
-fooBefore('before', 2);
-fooBefore('before', 3);
-fooBefore('before', 4);
-fooBefore('before', 5);
-
-var fooAfter = _.after(3, foo);
-
-fooAfter('after', 1);
-fooAfter('after', 2);
-fooAfter('after', 3);
-fooAfter('after', 4);
-fooAfter('after', 5);
-
-function foo2() {
-  _.map(arguments, function(v){
-    console.log(v);
-  })
-}
-
-foo2(1, 2, 3, 4, 5, 6);
-
-var fooAry = _.ary(foo2, 3);
-fooAry(1, 2, 3, 4, 5, 6);
+var fooMemoize = _.memoize(foo);
+console.log(fooMemoize(1)); // => 1: 1476798452391
+console.log(fooMemoize.cache.get(1)) // 1: 1476798452391（查看参数为1时的函数缓存）
+_.delay(function(){
+  console.log(fooMemoize(1)); // => 1: 1476798452391（函数结果缓存）
+  fooMemoize.cache.delete(1); // 清除参数为1时的函数缓存
+  console.log(fooMemoize(1)); // => 1: 1476798455395（生成新的函数缓存）
+}, 3000);
   </script>
 </body>
 </html>
