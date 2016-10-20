@@ -18,9 +18,19 @@
 <body>
   <script src="https://cdn.bootcss.com/lodash.js/4.15.0/lodash.min.js"></script>
   <script type="text/javascript">
-var foo = 123;
-if((typeof foo != 'object' && foo) || (typeof foo == 'object' && _.size(foo))) console.log('非空')
-else console.log('空')
+var users = [
+  { 'user': 'barney',  'age': 36 },
+  { 'user': 'fred',    'age': 40 },
+  { 'user': 'pebbles', 'age': 12 }
+];
+var youngest = _.chain(users)
+  .sortBy('age')
+  .map(function(o) {
+    return o.user + ' is ' + o.age;
+  })
+  .head()
+  .value();
+console.log(youngest); // => 'pebbles is 12'
   </script>
 </body>
 </html>
