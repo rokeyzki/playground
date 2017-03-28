@@ -1,0 +1,30 @@
+<script>
+  (function(){
+    // 私有变量
+    var foo1 = 123;
+
+    // 私有方法
+    function fn1(x) {
+      console.info(x);
+      x++;
+      return x;
+    }
+
+    console.log(fn1(foo1)); // 这里待理解
+
+    // 公有变量
+    var foo2 = 321;
+    window.foo2 = foo2;
+
+    // 公有方法
+    function fn2() {
+      console.info(foo1);
+      foo1--;
+      return foo1;
+    }
+
+    window.fn2 = fn2; // 将引用保存在外部执行环境的变量中，形成闭包，防止该执行环境被垃圾回收
+  })();
+
+  console.log(fn2());
+</script>
