@@ -1,0 +1,42 @@
+<script>
+  (function(){
+    var foo1 = 123;
+
+    function fn1() {
+      foo1++;
+      return foo1;
+    }
+
+    function fn2() {
+      foo1--;
+      return foo1;
+    }
+
+    console.log(fn1()) // 123++ = 124
+    console.log(fn2()) // 124-- = 123
+  })();
+</script>
+
+<!--
+非严格模式:
+
+EC VO G
+  arguments = {}
+    fn a1(匿名函数1) => 内存地址
+      arguments = {}
+        fn fn1 => 内存地址
+          arguments = {}
+          this => undefined => G
+        fn fn2 => 内存地址
+          arguments = {}
+          this => undefined => G
+        var foo1 = undefined
+      this => undefined => G
+  this => G
+
+EC VA G
+  fn a1
+    fn fn1
+    fn fn2
+    var foo1 = 123;
+-->

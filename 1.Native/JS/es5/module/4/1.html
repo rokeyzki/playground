@@ -5,12 +5,12 @@
 
     // 私有方法
     function fn1(x) {
-      console.info(x);
+      console.info(x); // 123
       x++;
       return x;
     }
 
-    console.log(fn1(foo1)); // 这里待理解
+    console.log(fn1(foo1)); // 124
 
     // 公有变量
     var foo2 = 321;
@@ -18,7 +18,7 @@
 
     // 公有方法
     function fn2() {
-      console.info(foo1);
+      console.info(foo1); // 123
       foo1--;
       return foo1;
     }
@@ -26,5 +26,39 @@
     window.fn2 = fn2; // 将引用保存在外部执行环境的变量中，形成闭包，防止该执行环境被垃圾回收
   })();
 
-  console.log(fn2());
+  console.log(fn2()); // 122
 </script>
+
+<!--
+非严格模式:
+
+EC VO G
+  arguments = {}
+    fn a1(匿名函数1) => 内存地址
+      arguments = {}
+        fn fn1 => 内存地址
+          arguments = {}
+          var x = undefined
+          this => undefined => G
+        fn fn2 => 内存地址
+          arguments = {}
+          this => undefined => G
+        var foo1 = undefined
+        var foo2 = undefined
+      this => undefined => G
+    var foo2 = undefined
+    var fn2 = undefined
+  this => G
+
+EC VA G
+  arguments = {
+    fn a1 => 内存地址
+      fn fn1 => 内存地址
+        var x = 123
+      fn fn2 => 内存地址
+      var foo1 = 123
+      var foo2 = 321
+    var foo2 = 321
+    var fn2 = fn2 => 内存地址 ??
+  }
+-->
