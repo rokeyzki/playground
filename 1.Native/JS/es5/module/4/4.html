@@ -1,0 +1,16 @@
+<script>
+  function foo(x, y) {
+    console.dir(this);
+    console.log(x + ' ' + y);
+  }
+
+  foo.apply(null, ['hello', 'world']);
+  foo.apply({1: 1}, ['hello', 'world']);
+
+  var arr1 = [11, 12, 13];
+  var arr2 = [21, 22, 23, 24]
+  var test = [].push.apply(arr1, arr2);
+  console.dir(arr1);
+  console.dir(arr2);
+  console.log(test);
+</script>
