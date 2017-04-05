@@ -12,7 +12,7 @@
   <canvas id="canvas" style="display: none;"></canvas>
 
   <p>原图</p>
-  <img src="" alt="" id="oriImg">  
+  <img src="" alt="" id="oriImg">
 
   <p>压缩图</p>
   <img src="" alt="" id="comImg">
@@ -24,7 +24,8 @@
       console.dir(fileInput.files);
 
       var imageObj = fileInput.files[0];
-      
+      console.log('原图体积：' + imageObj.size / 1000 + 'kb');
+
       imageCompress(imageObj);
     });
 
@@ -38,7 +39,7 @@
 
         var image = new Image();
         image.src = data;
-        
+
         image.onload = function () { // 加载图片
           console.dir(image);
           var width = image.width;
@@ -61,13 +62,31 @@
 
           context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); // 绘制到Canvas上
 
-          var qualityLevel = 0.1; // 压缩等级
+          var qualityLevel = 0.3; // 压缩等级
           var dataUrl = canvas.toDataURL('image/jpeg', qualityLevel); // 开始压缩
           document.querySelector('#comImg').src = dataUrl; // base64
+
+          var blobFile = convertBase64UrlToBlob(dataUrl); // 将base64的图片转为blob的File，用来上传
+          blobFile.name = 'compress.jpg';
+          console.dir(blobFile);
+          console.log('压缩图体积：' + blobFile.size / 1000 + 'kb')
         };
       };
 
       reader.readAsDataURL(imageObj); // onload
+    }
+
+    function convertBase64UrlToBlob(urlData) { // 将以base64的图片url数据转换为Blob
+      var bytes = window.atob(urlData.split(',')[1]); // 去掉url的头，并转换为byte
+
+      // 处理异常,将ascii码小于0的转换为大于0
+      var ab = new ArrayBuffer(bytes.length);
+      var ia = new Uint8Array(ab);
+      for (var i = 0; i < bytes.length; i++) {
+        ia[i] = bytes.charCodeAt(i);
+      }
+
+      return new Blob([ab], { type: 'image/jpeg' });
     }
   </script>
 </body>
