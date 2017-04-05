@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" name="" id="fileInput">
+  <button id="button">上传</button>
+  <canvas id="canvas" style="display: none;"></canvas>
+
+  <p>原图</p>
+  <img src="" alt="" id="oriImg">  
+
+  <p>压缩图</p>
+  <img src="" alt="" id="comImg">
+
+  <script>
+    button.addEventListener("click", function (e) {
+      var fileInput = document.querySelector('#fileInput');
+      console.dir(fileInput.value);
+      console.dir(fileInput.files);
+
+      var imageObj = fileInput.files[0];
+      
+      imageCompress(imageObj);
+    });
+
+    function imageCompress(imageObj) {
+      //读取图片数据
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var data = e.target.result; // base64
+        document.querySelector('#oriImg').src = data;
+
+        var image = new Image();
+        image.src = data;
+        
+        image.onload = function () { // 加载图片
+          console.dir(image);
+          var width = image.width;
+          var height = image.height;
+          console.log(width, height); // 获取图片真实宽度和高度
+
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          canvas.width = width;
+          canvas.height = height;
+
+          var sx = 0;
+          var sy = 0;
+          var sWidth = width;
+          var sHeight = height;
+          var dx = 0;
+          var dy = 0;
+          var dWidth = width;
+          var dHeight = height;
+
+          context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); // 绘制到Canvas上
+
+          var qualityLevel = 0.1; // 压缩等级
+          var dataUrl = canvas.toDataURL('image/jpeg', qualityLevel); // 开始压缩
+          document.querySelector('#comImg').src = dataUrl; // base64
+        };
+      };
+
+      reader.readAsDataURL(imageObj); // onload
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" name="" id="fileInput">
+  <button id="button">上传</button>
+
+  <img src="" alt="" id="ori">
+
+  <script>
+    button.addEventListener("click", function (e) {
+      var fileInput = document.querySelector('#fileInput');
+      console.dir(fileInput.value);
+      console.dir(fileInput.files);
+
+      var theImg = fileInput.files[0]; console.dir(theImg);
+
+      //读取图片数据
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var data = e.target.result; // console.log(data); // base64
+        //加载图片获取图片真实宽度和高度
+        var image = new Image();
+        image.onload = function () {
+          console.dir(image);
+          var width = image.width;
+          var height = image.height;
+          console.log(width, height);
+        };
+
+        image.src = data;
+
+        document.querySelector('#ori').src = data;
+      };
+
+      reader.readAsDataURL(theImg);
+    })
+  </script>
+</body>
+
+</html>
