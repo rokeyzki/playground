@@ -1,0 +1,17 @@
+<script>
+  // 未验证的代码
+  // 开始上传
+  var xhr = new XMLHttpRequest();
+  var formData = new FormData();
+  formData.append("url", helper.getAPIUrl("/photos", "base"));
+  formData.append("upfile", blobFile, blobFile.name || blobFile.fileName);
+
+  xhr.upload.addEventListener("progress", uploadProgress, false);
+  xhr.addEventListener("load", uploadComplete, false);
+  xhr.addEventListener("error", uploadFailed, false);
+  xhr.addEventListener("abort", uploadCanceled, false);
+
+  xhr.open("POST", URL_CLIENT + 'router/route.php?o=photo', true);
+  xhr.send(formData);
+
+</script>
