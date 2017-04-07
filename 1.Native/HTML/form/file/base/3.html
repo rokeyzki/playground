@@ -1,17 +1,109 @@
-<script>
-  // 未验证的代码
-  // 开始上传
-  var xhr = new XMLHttpRequest();
-  var formData = new FormData();
-  formData.append("url", helper.getAPIUrl("/photos", "base"));
-  formData.append("upfile", blobFile, blobFile.name || blobFile.fileName);
+<!DOCTYPE html>
+<html lang="en">
 
-  xhr.upload.addEventListener("progress", uploadProgress, false);
-  xhr.addEventListener("load", uploadComplete, false);
-  xhr.addEventListener("error", uploadFailed, false);
-  xhr.addEventListener("abort", uploadCanceled, false);
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
 
-  xhr.open("POST", URL_CLIENT + 'router/route.php?o=photo', true);
-  xhr.send(formData);
+<body>
+  <input type="file" name="" id="fileInput">
+  <button id="button">上传</button>
+  <canvas id="canvas" style="display: none;"></canvas>
 
-</script>
+  <p>原图</p>
+  <img src="" alt="" id="oriImg">
+
+  <p>压缩图</p>
+  <img src="" alt="" id="comImg">
+
+  <!--加这个库，主要是为了压缩图片前，读取图片的EXIF信息，防止手机端页面，图片被旋转-->
+  <script src="./exif.js"></script>
+  <script src="./MegaPixImage.js"></script>
+  <script>
+    button.addEventListener("click", function (e) {
+      var fileInput = document.querySelector('#fileInput');
+      console.dir(fileInput.value);
+      console.dir(fileInput.files);
+
+      var imageObj = fileInput.files[0];
+      console.log('原图体积：' + imageObj.size / 1000 + 'kb');
+
+      // 通过分析图片EXIF信息，获取照片方向角属性
+      EXIF.getData(imageObj, function () {
+        EXIF.getAllTags(this);
+        orientation = EXIF.getTag(this, 'Orientation'); // console.log(orientation);
+        
+        imageCompress(imageObj, orientation);
+      });
+    });
+
+    function imageCompress(imageObj, orientation) {
+      //读取图片数据
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var data = e.target.result; // base64
+        document.querySelector('#oriImg').src = data;
+
+        var image = new Image();
+        image.src = data;
+
+        image.onload = function () { // 加载图片
+          console.dir(image);
+          var width = image.width;
+          var height = image.height;
+          console.log(width, height); // 获取图片真实宽度和高度
+
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          canvas.width = width;
+          canvas.height = height;
+
+          var sx = 0;
+          var sy = 0;
+          var sWidth = width;
+          var sHeight = height;
+          var dx = 0;
+          var dy = 0;
+          var dWidth = width;
+          var dHeight = height;
+
+          context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); // 绘制到Canvas上
+
+          var qualityLevel = 0.2; // 压缩等级
+
+          var mpImg = new MegaPixImage(image);
+          mpImg.render(canvas, {
+            orientation: orientation // 把原先照片的方向角属性写入canvas
+          });
+
+          var dataUrl = canvas.toDataURL('image/jpeg', qualityLevel); // 开始压缩
+          document.querySelector('#comImg').src = dataUrl; // base64
+
+          var blobFile = convertBase64UrlToBlob(dataUrl); // 将base64的图片转为blob的File，用来上传
+          blobFile.name = 'compress.jpg';
+          console.dir(blobFile);
+          console.log('压缩图体积：' + blobFile.size / 1000 + 'kb')
+        };
+      };
+
+      reader.readAsDataURL(imageObj); // onload
+    }
+
+    function convertBase64UrlToBlob(urlData) { // 将以base64的图片url数据转换为Blob
+      var bytes = window.atob(urlData.split(',')[1]); // 去掉url的头，并转换为byte
+
+      // 处理异常,将ascii码小于0的转换为大于0
+      var ab = new ArrayBuffer(bytes.length);
+      var ia = new Uint8Array(ab);
+      for (var i = 0; i < bytes.length; i++) {
+        ia[i] = bytes.charCodeAt(i);
+      }
+
+      return new Blob([ab], { type: 'image/jpeg' });
+    }
+  </script>
+</body>
+
+</html>
