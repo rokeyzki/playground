@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>123</title>
-  </head>
-  <body>
-    <p>git ide test</p>
-  </body>
+<html lang="zh-cmn-hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="http://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
+  <!-- <script src="http://libs.baidu.com/underscore/1.7.0/underscore-min.js"></script> -->
+  <script>
+    var arr = [
+      {
+        'a': 11,
+        'b': 42,
+        'c': 13,
+      },
+      {
+        'a': 21,
+        'b': 22,
+        'c': 23,
+      },
+      {
+        'a': 31,
+        'b': 32,
+        'c': 33,
+      },
+    ];
+
+    var newArr = _.sortBy(arr, function(obj){
+      return obj.b;
+    });
+
+    console.dir(newArr);
+
+    var users = [
+      { 'user': 'fred',   'age': 48 },
+      { 'user': 'barney', 'age': 36 },
+      { 'user': 'fred',   'age': 40 },
+      { 'user': 'barney', 'age': 34 }
+    ];
+    var newUsers = _.sortBy(users, ['user', 'age']); // lodash 下有效
+
+    console.dir(newUsers);
+  </script>
+</body>
 </html>
